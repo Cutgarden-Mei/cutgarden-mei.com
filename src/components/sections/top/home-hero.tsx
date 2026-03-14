@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 export function HomeHero() {
 	return (
-		<section className="max-w-[1056px] mx-auto">
+		<TopSectionContainer>
 			<div className="relative">
 				<Image
 					src="/images/top/hero.jpg"
@@ -16,6 +17,6 @@ export function HomeHero() {
 					<span className="ml-10">おまかせください！</span>
 				</p>
 			</div>
-		</section>
+		</TopSectionContainer>
 	);
 }

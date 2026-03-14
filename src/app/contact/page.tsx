@@ -1,5 +1,4 @@
 import { ContactForm } from "@/components/forms/contact-form";
-import { PageHero } from "@/components/sections/page-hero";
 import { getContactSettings, getSiteSettings } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -10,7 +9,6 @@ export default async function ContactPage() {
 
   return (
     <>
-      <PageHero title="CONTACT" subtitle="お問い合わせ" />
       <section className="bg-gradient-to-b from-[#cda98e]/12 to-transparent px-4 py-20 md:px-6">
         <div className="mx-auto grid w-full max-w-[1120px] gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <div>

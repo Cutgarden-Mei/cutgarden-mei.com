@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-import { PageHero } from "@/components/sections/page-hero";
 import { getNewsPostBySlug, getNewsPosts } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -30,7 +29,6 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
 
   return (
     <>
-      <PageHero title={post.title} subtitle={post.category} />
       <section className="px-4 py-20 md:px-6">
         <div className="mx-auto w-full max-w-[800px]">
           <p className="inline-flex gap-3 text-sm text-[#7e6b61]"><span>{post.category}</span><span>{post.publishedAt}</span></p>

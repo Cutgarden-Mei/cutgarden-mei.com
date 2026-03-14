@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { PageHero } from "@/components/sections/page-hero";
 import { getStaffMembers } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -13,7 +12,6 @@ export default async function StaffPage() {
 
   return (
     <>
-      <PageHero title="STAFF" subtitle="スタッフ紹介" />
       <section className="px-4 py-20 md:px-6">
         <div className="mx-auto grid w-full max-w-[1120px] gap-4 md:grid-cols-2">
           {staffMembers.map((member) => (

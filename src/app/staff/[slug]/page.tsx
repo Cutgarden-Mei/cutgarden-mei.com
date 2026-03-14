@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { PageHero } from "@/components/sections/page-hero";
 import { getStaffMemberBySlug, getStaffMembers } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -31,7 +30,6 @@ export default async function StaffDetailPage({ params }: { params: Promise<{ sl
 
   return (
     <>
-      <PageHero title={member.name} subtitle={member.role} />
       <section className="px-4 py-20 md:px-6">
         <div className="mx-auto grid w-full max-w-[1120px] gap-8 md:grid-cols-[360px_minmax(0,1fr)] md:items-start">
           <div className="relative min-h-[420px] overflow-hidden rounded-[28px]">

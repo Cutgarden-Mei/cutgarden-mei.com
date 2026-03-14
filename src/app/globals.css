@@ -11,6 +11,8 @@
 	--color-contact-panel: #bbbbbb;
 	--color-contact-panel-border: #eeeeee;
 	--color-contact-accent: #ef4444;
+	--color-top-brown: #4d2300;
+	--color-top-pink: #ff5990;
 }
 
 :root {
@@ -35,7 +37,6 @@ body {
 }
 
 a {
-	color: inherit;
 	text-decoration: none;
 }
 

@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/sections/page-hero";
+
 import { getMenuCategories } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -10,7 +10,6 @@ export default async function MenuPage() {
 
   return (
     <>
-      <PageHero title="MENU" subtitle="メニュー・料金" />
       <section className="px-4 py-20 md:px-6">
         <div className="mx-auto w-full max-w-[1120px]">
           <p className="max-w-3xl text-base leading-8 text-[#7e6b61]">WordPressの自由入力に依存しすぎず、カテゴリと項目を分けてContentfulで管理しやすい構成にしています。</p>

@@ -35,7 +35,12 @@ export async function Header() {
 		<header className="sticky z-50 flex w-full flex-col items-center justify-between bg-header-bg">
 			<div className="mx-auto flex w-full max-w-[1056px] items-center justify-between py-2">
 				<div className="flex flex-col gap-2">
-					<Image src="/images/logo.png" alt="logo" width={360} height={51} />
+					<Image
+						src="/images/logo/logo.png"
+						alt="logo"
+						width={360}
+						height={51}
+					/>
 					<p className="text-sm text-white font-serif">
 						カットガーデンMeiは、大阪市平野区のアットホームな美容室です
 					</p>

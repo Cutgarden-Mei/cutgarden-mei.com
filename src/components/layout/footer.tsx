@@ -10,6 +10,17 @@ type FooterSectionTitleProps = {
 	children: React.ReactNode;
 };
 
+const DUMMY_FOOTER_ARTICLES: PageLinkItem[] = [
+	{ href: "/", label: "◆カットガーデンＭｅｉ・２月の定休日のお知らせ" },
+	{ href: "/", label: "◆カットガーデンMei・年末年始と1月の定休日のお知らせ" },
+	{
+		href: "/",
+		label: "◆カットガーデンＭｅｉ・12月の定休日と年末年始のお知らせ",
+	},
+	{ href: "/", label: "◆カットガーデンＭｅｉ・11月の定休日のお知らせ" },
+	{ href: "/", label: "◆カットガーデンMei・10月の定休日のお知らせ" },
+];
+
 const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: "/", label: "お客様の声" },
 	{ href: "/", label: "イオントリートメント" },
@@ -38,7 +49,7 @@ export async function Footer() {
 	return (
 		<footer className="bg-[#321600] text-white">
 			<div className="max-w-[1056px] mx-auto flex items-start justify-center pt-6 pb-12 gap-16">
-				<div className="font-serif w-1/3 flex flex-col gap-4">
+				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>ページ</FooterSectionTitle>
 					<ul className="text-sm flex flex-col gap-4">
 						{PAGE_LINK_ITEMS.map((item) => (
@@ -60,10 +71,29 @@ export async function Footer() {
 						))}
 					</ul>
 				</div>
-				<div className="font-serif w-1/3 flex flex-col gap-4">
+				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>最新記事</FooterSectionTitle>
+					<ul className="text-sm flex flex-col gap-2">
+						{DUMMY_FOOTER_ARTICLES.map((item) => (
+							<Link
+								key={item.label}
+								href={item.href}
+								className="flex w-fit items-center gap-2 hover:underline group"
+							>
+								<div>
+									<Image
+										src="/images/footer/play-w.png"
+										alt="play-w"
+										width={6}
+										height={6}
+									/>
+								</div>
+								<li className="group-hover:underline">{item.label}</li>
+							</Link>
+						))}
+					</ul>
 				</div>
-				<div className="font-serif w-1/3 flex flex-col gap-4">
+				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
 					<div className="flex flex-col gap-2">
 						<Link href="/" className="hover:underline">

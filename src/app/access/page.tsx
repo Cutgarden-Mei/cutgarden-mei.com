@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { PageHero } from "@/components/sections/page-hero";
 import { getAccessInfo } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -12,7 +11,6 @@ export default async function AccessPage() {
 
   return (
     <>
-      <PageHero title="ACCESS" subtitle="アクセス" />
       <section className="px-4 py-20 md:px-6">
         <div className="mx-auto grid w-full max-w-[1120px] gap-4 md:grid-cols-2">
           <article className="rounded-[28px] border border-[#73442b]/10 bg-white/80 p-7 shadow-[0_18px_40px_rgba(38,22,15,0.08)]">
