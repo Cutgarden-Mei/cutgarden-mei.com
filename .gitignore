@@ -1,9 +1,15 @@
+# ディレクトリ
 node_modules
 .next
 out
 .vercel
+
+# 環境変数
+.env
 .env.local
 .env*.local
+
+# その他
 .DS_Store
 npm-debug.log*
 *.tsbuildinfo
