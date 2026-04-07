@@ -101,7 +101,7 @@ export default async function SitemapPage() {
 		{ href: ROUTES.menu, label: "メニュー・料金" },
 		{ href: ROUTES.topResetCut, label: "リセットカット" },
 		{ href: ROUTES.home, label: "旧指定成分について" },
-		{ href: ROUTES.home, label: "髪の基礎知識" },
+		{ href: ROUTES.hairBasics, label: "髪の基礎知識" },
 		{
 			href: ROUTES.news,
 			label: "お知らせ",
