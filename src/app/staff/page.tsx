@@ -3,8 +3,9 @@ import Link from "next/link";
 
 import { getStaffMembers } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
-export const metadata = buildMetadata({ title: "Staff | CUT GARDEN MEI", description: "スタッフ一覧ページです。", path: "/staff" });
+export const metadata = buildMetadata({ title: buildPageTitle("Staff"), description: "スタッフ一覧ページです。", path: "/staff" });
 export const revalidate = 60;
 
 export default async function StaffPage() {

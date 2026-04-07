@@ -1,9 +1,10 @@
 import { ContactForm } from "@/components/forms/contact-form";
 import { PageFrame } from "@/components/page-frame";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
 export const metadata = buildMetadata({
-	title: "Contact | CUT GARDEN MEI",
+	title: buildPageTitle("Contact"),
 	description: "お問い合わせページです。",
 	path: "/contact",
 });

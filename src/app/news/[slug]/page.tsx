@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { getPostBySlug, getPosts } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 import type { HomeUpdatePostType, Post } from "@/lib/types";
 
 export const revalidate = 60;
@@ -55,10 +56,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    return buildMetadata({ title: "Post | CUT GARDEN MEI", description: "投稿詳細ページです。", path: `/news/${slug}` });
+    return buildMetadata({ title: buildPageTitle("Post"), description: "投稿詳細ページです。", path: `/news/${slug}` });
   }
 
-  return buildMetadata({ title: `${post.title} | CUT GARDEN MEI`, description: post.excerpt, path: `/news/${slug}` });
+  return buildMetadata({ title: buildPageTitle(post.title), description: post.excerpt, path: `/news/${slug}` });
 }
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {

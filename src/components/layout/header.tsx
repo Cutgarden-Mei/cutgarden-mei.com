@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ROUTES } from "@/lib/routes";
+
 type NavItem = {
 	href: string;
 	label: string;
@@ -14,7 +16,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
 	{
-		href: "/#top",
+		href: ROUTES.top,
 		label: "ホーム",
 		icon: {
 			src: "/images/header/home.png",
@@ -23,18 +25,18 @@ const NAV_ITEMS: NavItem[] = [
 			height: 24,
 		},
 	},
-	{ href: "/#keratin-perm", label: "ケラチンパーマ" },
-	{ href: "/#clinic-straightening", label: "クリニック縮毛矯正" },
-	{ href: "/#reset-cut", label: "リセットカット" },
-	{ href: "/#ion-treatment", label: "イオントリートメント" },
-	{ href: "/#menu", label: "メニュー" },
+	{ href: ROUTES.topKeratinPerm, label: "ケラチンパーマ" },
+	{ href: ROUTES.topClinicStraightening, label: "クリニック縮毛矯正" },
+	{ href: ROUTES.topResetCut, label: "リセットカット" },
+	{ href: ROUTES.topIonTreatment, label: "イオントリートメント" },
+	{ href: ROUTES.topMenu, label: "メニュー" },
 ];
 
 export async function Header() {
 	return (
 		<header className="sticky z-50 flex w-full flex-col items-center justify-between bg-header-bg">
 			<div className="mx-auto flex w-full max-w-[1056px] items-center justify-between py-2">
-				<div className="flex flex-col gap-2">
+				<Link href={ROUTES.home} className="flex flex-col gap-2">
 					<Image
 						src="/images/logo/logo.png"
 						alt="logo"
@@ -44,10 +46,10 @@ export async function Header() {
 					<p className="text-sm text-white font-serif">
 						カットガーデンMeiは、大阪市平野区のアットホームな美容室です
 					</p>
-				</div>
+				</Link>
 				<div className="flex flex-col gap-2">
 					<Link
-						href="/contact"
+						href={ROUTES.contact}
 						className="flex items-center gap-2 border-2 border-contact-panel-border bg-contact-panel px-2"
 					>
 						<Image

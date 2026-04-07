@@ -5,12 +5,18 @@ import type { MetadataFactory } from "@/lib/types";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-export const buildMetadata: MetadataFactory = ({ title, description, path = "/" }) => {
+export const buildMetadata: MetadataFactory = ({
+  title,
+  description,
+  path = "/",
+  keywords = siteSettings.seo.keywords,
+}) => {
   const url = new URL(path, siteUrl).toString();
 
   return {
     title,
     description,
+    keywords,
     metadataBase: new URL(siteUrl),
     openGraph: {
       title,

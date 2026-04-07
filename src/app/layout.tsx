@@ -16,7 +16,11 @@ const notoSerif = Noto_Serif_JP({
 
 export async function generateMetadata(): Promise<Metadata> {
 	const settings = await getSiteSettings();
-	return { title: settings.seo.title, description: settings.seo.description };
+	return {
+		title: settings.seo.title,
+		description: settings.seo.description,
+		keywords: settings.seo.keywords,
+	};
 }
 
 export default function RootLayout({

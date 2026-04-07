@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import { getNewsPosts } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
-export const metadata = buildMetadata({ title: "News | CUT GARDEN MEI", description: "お知らせ一覧ページです。", path: "/news" });
+export const metadata = buildMetadata({ title: buildPageTitle("News"), description: "お知らせ一覧ページです。", path: "/news" });
 export const revalidate = 60;
 
 export default async function NewsPage() {

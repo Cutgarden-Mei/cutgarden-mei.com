@@ -8,10 +8,11 @@ import type {
   StaffMember,
   Voice,
 } from "@/lib/types";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from "@/lib/site";
 
 export const siteSettings: SiteSettings = {
-  siteName: "CUT GARDEN MEI",
-  siteDescription: "髪も気持ちも整う、街のプライベートサロン。",
+  siteName: SITE_TITLE,
+  siteDescription: SITE_DESCRIPTION,
   phoneNumber: "03-1234-5678",
   reservationUrl: "https://example.com/reserve",
   address: "東京都渋谷区〇〇 1-2-3",
@@ -19,9 +20,9 @@ export const siteSettings: SiteSettings = {
   holiday: "毎週火曜・第3水曜",
   instagramUrl: "https://www.instagram.com/",
   seo: {
-    title: "CUT GARDEN MEI | 渋谷のプライベートサロン",
-    description:
-      "WordPressサイトを置き換える前提で設計した、CUT GARDEN MEI のヘッドレスCMS版サイトです。",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    keywords: [...SITE_KEYWORDS],
   },
   navItems: [
     { label: "Home", href: "/" },

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getPosts } from "@/lib/contentful";
+import { getNewsDetailRoute, ROUTES } from "@/lib/routes";
 
 type PageLinkItem = {
 	href: string;
@@ -26,10 +27,10 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 ];
 
 const FOOTER_NAV_ITEMS: PageLinkItem[] = [
-	{ href: "/", label: "アクセス" },
-	{ href: "/contact", label: "お問い合わせ" },
-	{ href: "/", label: "サイトマップ" },
-	{ href: "/", label: "トップページ" },
+	{ href: ROUTES.access, label: "アクセス" },
+	{ href: ROUTES.contact, label: "お問い合わせ" },
+	{ href: ROUTES.siteMap, label: "サイトマップ" },
+	{ href: ROUTES.home, label: "トップページ" },
 ];
 
 function FooterSectionTitle({ children }: FooterSectionTitleProps) {
@@ -41,7 +42,7 @@ export async function Footer() {
 		.filter((post) => post.type === "news")
 		.slice(0, 5)
 		.map((post) => ({
-			href: `/news/${post.slug}`,
+			href: getNewsDetailRoute(post.slug),
 			label: `${post.title}`,
 		}));
 
@@ -95,7 +96,7 @@ export async function Footer() {
 				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
 					<div className="flex flex-col gap-2">
-						<Link href="/" className="hover:underline">
+						<Link href={ROUTES.home} className="hover:underline">
 							<Image
 								src="/images/footer/facebook.png"
 								alt="facebook"
@@ -104,7 +105,7 @@ export async function Footer() {
 								className="w-full h-10"
 							/>
 						</Link>
-						<Link href="/" className="hover:underline">
+						<Link href={ROUTES.home} className="hover:underline">
 							<Image
 								src="/images/footer/line.png"
 								alt="line"

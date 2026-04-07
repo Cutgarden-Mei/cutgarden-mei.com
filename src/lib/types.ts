@@ -8,6 +8,7 @@ export type NavItem = {
 export type Seo = {
   title: string;
   description: string;
+  keywords: string[];
 };
 
 export type SiteSettings = {
@@ -116,6 +117,7 @@ export type MetadataFactoryInput = {
   title: string;
   description: string;
   path?: string;
+  keywords?: string[];
 };
 
 export type MetadataFactory = (input: MetadataFactoryInput) => Metadata;

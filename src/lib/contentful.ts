@@ -218,6 +218,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       seo: {
         title: getField(entry, "seoTitle", siteSettings.seo.title),
         description: getField(entry, "seoDescription", siteSettings.seo.description),
+        keywords: siteSettings.seo.keywords,
       },
       navItems: siteSettings.navItems,
     };

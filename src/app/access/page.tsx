@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import { getAccessInfo } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
-export const metadata = buildMetadata({ title: "Access | CUT GARDEN MEI", description: "アクセス情報ページです。", path: "/access" });
+export const metadata = buildMetadata({ title: buildPageTitle("Access"), description: "アクセス情報ページです。", path: "/access" });
 export const revalidate = 60;
 
 export default async function AccessPage() {

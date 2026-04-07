@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { HomeClinicStraighteningSection } from "@/components/sections/top/home-clinic-straightening-section";
 import { HomeConceptSection } from "@/components/sections/top/home-concept-section";
 import { HomeHero } from "@/components/sections/top/home-hero";
@@ -8,13 +10,27 @@ import { HomeResetCutSection } from "@/components/sections/top/home-reset-cut-se
 import { HomeUpdatesSection } from "@/components/sections/top/home-updates-section";
 import { SectionDivider } from "@/components/sections/section-divider";
 import { buildMetadata } from "@/lib/metadata";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 
 export const metadata = buildMetadata({
-	title: "CUT GARDEN MEI | Home",
-	description:
-		"現サイトの雰囲気を引き継ぎつつ、更新しやすいヘッドレス構成へ置き換えたトップページです。",
+	title: SITE_TITLE,
+	description: SITE_DESCRIPTION,
 	path: "/",
 });
+
+function TopSectionAnchor({
+	id,
+	children,
+}: {
+	id: string;
+	children: ReactNode;
+}) {
+	return (
+		<div id={id} className="scroll-mt-40">
+			{children}
+		</div>
+	);
+}
 
 export default async function HomePage() {
 	return (
@@ -27,25 +43,25 @@ export default async function HomePage() {
 			<SectionDivider />
 			<HomeConceptSection />
 			<SectionDivider />
-			<div id="menu" className="scroll-mt-40">
+			<TopSectionAnchor id="menu">
 				<HomeMenuSection />
-			</div>
+			</TopSectionAnchor>
 			<SectionDivider />
-			<div id="keratin-perm" className="scroll-mt-40">
+			<TopSectionAnchor id="keratin-perm">
 				<HomeKeratinPermSection />
-			</div>
+			</TopSectionAnchor>
 			<SectionDivider />
-			<div id="clinic-straightening" className="scroll-mt-40">
+			<TopSectionAnchor id="clinic-straightening">
 				<HomeClinicStraighteningSection />
-			</div>
+			</TopSectionAnchor>
 			<SectionDivider />
-			<div id="reset-cut" className="scroll-mt-40">
+			<TopSectionAnchor id="reset-cut">
 				<HomeResetCutSection />
-			</div>
+			</TopSectionAnchor>
 			<SectionDivider />
-			<div id="ion-treatment" className="scroll-mt-40">
+			<TopSectionAnchor id="ion-treatment">
 				<HomeIonTreatmentSection />
-			</div>
+			</TopSectionAnchor>
 		</>
 	);
 }

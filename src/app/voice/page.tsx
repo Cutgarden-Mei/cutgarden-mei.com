@@ -1,8 +1,9 @@
 import { getVoices } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
 export const metadata = buildMetadata({
-	title: "Voice | CUT GARDEN MEI",
+	title: buildPageTitle("Voice"),
 	description: "お客様の声一覧ページです。",
 	path: "/voice",
 });

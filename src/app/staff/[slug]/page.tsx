@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { getStaffMemberBySlug, getStaffMembers } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -16,10 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const member = await getStaffMemberBySlug(slug);
 
   if (!member) {
-    return buildMetadata({ title: "Staff | CUT GARDEN MEI", description: "スタッフ詳細ページです。", path: `/staff/${slug}` });
+    return buildMetadata({ title: buildPageTitle("Staff"), description: "スタッフ詳細ページです。", path: `/staff/${slug}` });
   }
 
-  return buildMetadata({ title: `${member.name} | CUT GARDEN MEI`, description: member.bio[0], path: `/staff/${slug}` });
+  return buildMetadata({ title: buildPageTitle(member.name), description: member.bio[0], path: `/staff/${slug}` });
 }
 
 export default async function StaffDetailPage({ params }: { params: Promise<{ slug: string }> }) {

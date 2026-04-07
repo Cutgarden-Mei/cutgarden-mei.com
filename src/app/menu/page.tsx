@@ -1,8 +1,9 @@
 
 import { getMenuCategories } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
+import { buildPageTitle } from "@/lib/site";
 
-export const metadata = buildMetadata({ title: "Menu | CUT GARDEN MEI", description: "メニューと料金をカテゴリごとに整理したページです。", path: "/menu" });
+export const metadata = buildMetadata({ title: buildPageTitle("Menu"), description: "メニューと料金をカテゴリごとに整理したページです。", path: "/menu" });
 export const revalidate = 60;
 
 export default async function MenuPage() {
