@@ -25,7 +25,7 @@ export function PageFrame({
 		>
 			{backgroundImageSrc ? (
 				<div
-					className="absolute inset-0 bg-cover bg-center opacity-95"
+					className="absolute inset-0 bg-fixed bg-cover bg-center opacity-95"
 					style={{ backgroundImage: `url('${backgroundImageSrc}')` }}
 				/>
 			) : null}
