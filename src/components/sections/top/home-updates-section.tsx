@@ -1,31 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
-
-const NOTICE_ITEMS = [
-	{ href: "/news/1", title: "◆カットガーデンＭｅｉ・２月の定休日のお知らせ" },
-	{
-		href: "/news/1",
-		title: "◆カットガーデンMei・年末年始と1月の定休日のお知らせ",
-	},
-	{
-		href: "/news/1",
-		title: "◆カットガーデンＭｅｉ・12月の定休日と年末年始のお知らせ",
-	},
-	{ href: "/news/1", title: "◆カットガーデンＭｅｉ・11月の定休日のお知らせ" },
-	{ href: "/news/1", title: "◆カットガーデンMei・10月の定休日のお知らせ" },
-];
-
-const ARTICLE_ITEMS = [
-	{ href: "/news/1", title: "新型コロナウィルス対策" },
-	{ href: "/news/1", title: "クリスマスですね～" },
-	{ href: "/news/1", title: "看板がぁ～～" },
-	{ href: "/news/1", title: "ブローのお話" },
-	{ href: "/news/1", title: "難しいですね～(^_^;)" },
-];
+import { getHomeUpdatePosts } from "@/lib/contentful";
 
 type HomeUpdatesListItemProps = {
+	id: string;
 	href: string;
 	title: string;
 };
@@ -53,19 +34,42 @@ function HomeUpdatesColumn({ title, items }: HomeUpdatesColumnProps) {
 				textClassName="font-bold font-serif"
 			/>
 			<ul className="flex flex-col gap-1 w-[400px] rounded-[4px] border-4 border-contact-panel p-[4px] pt-[8px]">
-				{items.map((item) => (
-					<HomeUpdatesListItem
-						key={item.title}
-						href={item.href}
-						title={item.title}
-					/>
-				))}
+				{items.length > 0 ? (
+					items.map((item) => (
+						<HomeUpdatesListItem
+							key={item.id}
+							id={item.id}
+							href={item.href}
+							title={item.title}
+						/>
+					))
+				) : (
+					<li className="text-sm text-[#7e6b61]">まだ記事がありません。</li>
+				)}
 			</ul>
 		</div>
 	);
 }
 
-export function HomeUpdatesSection() {
+export async function HomeUpdatesSection() {
+	const posts = await getHomeUpdatePosts();
+	const noticeItems = posts
+		.filter((post) => post.type === "news")
+		.slice(0, 5)
+		.map((post) => ({
+			id: post.id,
+			href: `/news/${post.slug}`,
+			title: post.title,
+		}));
+	const articleItems = posts
+		.filter((post) => post.type === "blog")
+		.slice(0, 5)
+		.map((post) => ({
+			id: post.id,
+			href: `/news/${post.slug}`,
+			title: post.title,
+		}));
+
 	return (
 		<TopSectionContainer className="py-14">
 			<div className="flex flex-col items-center justify-center gap-4">
@@ -89,8 +93,8 @@ export function HomeUpdatesSection() {
 					</button>
 				</div>
 				<div className="flex gap-4 items-start">
-					<HomeUpdatesColumn title="最新のおしらせ" items={NOTICE_ITEMS} />
-					<HomeUpdatesColumn title="最新の記事" items={ARTICLE_ITEMS} />
+					<HomeUpdatesColumn title="最新のおしらせ" items={noticeItems} />
+					<HomeUpdatesColumn title="最新の記事" items={articleItems} />
 				</div>
 			</div>
 		</TopSectionContainer>

@@ -130,6 +130,7 @@ export const newsPosts: NewsPost[] = [
     category: "お知らせ",
     publishedAt: "2026-03-09",
     image: "/images/default-image.jpg",
+    type: "news",
   },
   {
     slug: "spring-color-campaign",
@@ -142,6 +143,7 @@ export const newsPosts: NewsPost[] = [
     category: "キャンペーン",
     publishedAt: "2026-03-01",
     image: "/images/default-image.jpg",
+    type: "news",
   },
 ];
 

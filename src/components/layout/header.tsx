@@ -14,7 +14,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
 	{
-		href: "/",
+		href: "/#top",
 		label: "ホーム",
 		icon: {
 			src: "/images/header/home.png",
@@ -23,11 +23,11 @@ const NAV_ITEMS: NavItem[] = [
 			height: 24,
 		},
 	},
-	{ href: "/", label: "ケラチンパーマ" },
-	{ href: "/", label: "メニュー" },
-	{ href: "/", label: "クリニック縮毛矯正" },
-	{ href: "/", label: "リセットカット" },
-	{ href: "/", label: "イオントリートメント" },
+	{ href: "/#keratin-perm", label: "ケラチンパーマ" },
+	{ href: "/#clinic-straightening", label: "クリニック縮毛矯正" },
+	{ href: "/#reset-cut", label: "リセットカット" },
+	{ href: "/#ion-treatment", label: "イオントリートメント" },
+	{ href: "/#menu", label: "メニュー" },
 ];
 
 export async function Header() {
@@ -47,7 +47,7 @@ export async function Header() {
 				</div>
 				<div className="flex flex-col gap-2">
 					<Link
-						href="/"
+						href="/contact"
 						className="flex items-center gap-2 border-2 border-contact-panel-border bg-contact-panel px-2"
 					>
 						<Image

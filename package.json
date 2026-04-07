@@ -7,7 +7,9 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "fix": "npm run lint && npm run typecheck"
+    "fix": "npm run lint && npm run typecheck",
+    "contentful:migrate": "tsx ./contentful/run-migration.ts",
+    "contentful:migrate:contact-post": "npm run contentful:migrate -- ./contentful/migrations/001-create-contact-and-post.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +30,13 @@
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "contentful-migration": "^4.32.0",
+    "dotenv": "^17.4.1",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.1.6",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "private": true

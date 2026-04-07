@@ -19,21 +19,33 @@ export const metadata = buildMetadata({
 export default async function HomePage() {
 	return (
 		<>
-			<HomeHero />
+			<div id="top">
+				<HomeHero />
+			</div>
 			<SectionDivider />
 			<HomeUpdatesSection />
 			<SectionDivider />
 			<HomeConceptSection />
 			<SectionDivider />
-			<HomeMenuSection />
+			<div id="menu" className="scroll-mt-40">
+				<HomeMenuSection />
+			</div>
 			<SectionDivider />
-			<HomeKeratinPermSection />
+			<div id="keratin-perm" className="scroll-mt-40">
+				<HomeKeratinPermSection />
+			</div>
 			<SectionDivider />
-			<HomeClinicStraighteningSection />
+			<div id="clinic-straightening" className="scroll-mt-40">
+				<HomeClinicStraighteningSection />
+			</div>
 			<SectionDivider />
-			<HomeResetCutSection />
+			<div id="reset-cut" className="scroll-mt-40">
+				<HomeResetCutSection />
+			</div>
 			<SectionDivider />
-			<HomeIonTreatmentSection />
+			<div id="ion-treatment" className="scroll-mt-40">
+				<HomeIonTreatmentSection />
+			</div>
 		</>
 	);
 }

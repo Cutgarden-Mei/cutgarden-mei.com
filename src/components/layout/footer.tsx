@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { getPosts } from "@/lib/contentful";
+
 type PageLinkItem = {
 	href: string;
 	label: string;
@@ -9,17 +11,6 @@ type PageLinkItem = {
 type FooterSectionTitleProps = {
 	children: React.ReactNode;
 };
-
-const DUMMY_FOOTER_ARTICLES: PageLinkItem[] = [
-	{ href: "/", label: "◆カットガーデンＭｅｉ・２月の定休日のお知らせ" },
-	{ href: "/", label: "◆カットガーデンMei・年末年始と1月の定休日のお知らせ" },
-	{
-		href: "/",
-		label: "◆カットガーデンＭｅｉ・12月の定休日と年末年始のお知らせ",
-	},
-	{ href: "/", label: "◆カットガーデンＭｅｉ・11月の定休日のお知らせ" },
-	{ href: "/", label: "◆カットガーデンMei・10月の定休日のお知らせ" },
-];
 
 const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: "/", label: "お客様の声" },
@@ -36,7 +27,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 
 const FOOTER_NAV_ITEMS: PageLinkItem[] = [
 	{ href: "/", label: "アクセス" },
-	{ href: "/", label: "お問い合わせ" },
+	{ href: "/contact", label: "お問い合わせ" },
 	{ href: "/", label: "サイトマップ" },
 	{ href: "/", label: "トップページ" },
 ];
@@ -46,6 +37,14 @@ function FooterSectionTitle({ children }: FooterSectionTitleProps) {
 }
 
 export async function Footer() {
+	const footerArticles = (await getPosts())
+		.filter((post) => post.type === "news")
+		.slice(0, 5)
+		.map((post) => ({
+			href: `/news/${post.slug}`,
+			label: `${post.title}`,
+		}));
+
 	return (
 		<footer className="bg-[#321600] text-white">
 			<div className="max-w-[1056px] mx-auto flex items-start justify-center pt-6 pb-12 gap-16">
@@ -74,7 +73,7 @@ export async function Footer() {
 				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>最新記事</FooterSectionTitle>
 					<ul className="text-sm flex flex-col gap-2">
-						{DUMMY_FOOTER_ARTICLES.map((item) => (
+						{footerArticles.map((item) => (
 							<Link
 								key={item.label}
 								href={item.href}

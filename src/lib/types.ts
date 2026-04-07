@@ -62,7 +62,9 @@ export type Voice = {
   staffSlug?: string;
 };
 
-export type NewsPost = {
+export type HomeUpdatePostType = "blog" | "news";
+
+export type Post = {
   slug: string;
   title: string;
   excerpt: string;
@@ -70,6 +72,17 @@ export type NewsPost = {
   category: string;
   publishedAt: string;
   image: string;
+  type: HomeUpdatePostType;
+};
+
+export type NewsPost = Post;
+
+export type HomeUpdatePost = {
+  id: string;
+  slug: string;
+  title: string;
+  type: HomeUpdatePostType;
+  publishedAt: string;
 };
 
 export type AccessInfo = {
