@@ -11,6 +11,11 @@
 	--color-contact-panel: #bbbbbb;
 	--color-contact-panel-border: #eeeeee;
 	--color-contact-accent: #ef4444;
+	--color-contact-field-border: #ccb9ab;
+	--color-contact-focus: #73442b;
+	--color-contact-submit: #8d4f13;
+	--color-contact-error: #b42318;
+	--color-contact-success: #2b6d45;
 	--color-top-brown: #4d2300;
 	--color-top-pink: #ff5990;
 }
