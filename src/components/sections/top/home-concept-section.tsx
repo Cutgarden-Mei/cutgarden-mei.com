@@ -1,7 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+
+import { Modal } from "@/components/modal";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 
 export function HomeConceptSection() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	return (
 		<TopSectionContainer className="py-14">
 			<div className="flex flex-col gap-10">
@@ -9,14 +16,19 @@ export function HomeConceptSection() {
 					カットガーデンMeiは、大阪市平野区のアットホームな美容室です。
 				</h2>
 				<div className="flex justify-center gap-4">
-					<div className="relative h-[330px] w-[350px]">
+					<button
+						type="button"
+						className="relative h-[330px] w-[350px] cursor-pointer overflow-hidden"
+						onClick={() => setIsModalOpen(true)}
+						aria-label="画像を拡大表示"
+					>
 						<Image
 							src="/images/top/mei_top_02.jpg"
 							alt="concept"
 							fill
-							className="object-cover object-center"
+							className="object-cover object-center transition hover:scale-[1.02]"
 						/>
-					</div>
+					</button>
 					<div className="relative h-[330px] w-[350px]">
 						<Image
 							src="/images/top/mei_top_01.jpg"
@@ -36,6 +48,22 @@ export function HomeConceptSection() {
 					ご来店の際は、ご予約をお願い致します。
 				</p>
 			</div>
+			<Modal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				maxWidthClassName="max-w-[720px]"
+				bodyClassName="bg-white px-4 py-4 md:px-6 md:py-6"
+			>
+				<div className="relative mx-auto w-full max-w-[640px]">
+					<Image
+						src="/images/top/mei_top_02.jpg"
+						alt="concept enlarged"
+						width={600}
+						height={776}
+						className="h-auto w-full object-contain"
+					/>
+				</div>
+			</Modal>
 		</TopSectionContainer>
 	);
 }

@@ -1,9 +1,6 @@
-import Link from "next/link";
-
 import { PageFrame } from "@/components/page-frame";
 import { getAccessInfo } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
-import { ROUTES } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
 import Image from "next/image";
 
