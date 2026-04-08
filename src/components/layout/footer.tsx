@@ -18,7 +18,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
 	{ href: "/", label: "クリニック縮毛矯正" },
 	{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },
-	{ href: "/", label: "シャンプーのお話" },
+	{ href: ROUTES.shampooTalk, label: "シャンプーのお話" },
 	{ href: "/", label: "スタッフ紹介" },
 	{ href: "/", label: "メニュー・料金" },
 	{ href: "/", label: "リセットカット" },

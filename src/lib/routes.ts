@@ -10,6 +10,7 @@ export const ROUTES = {
 	hairBasics: "/hair-basics",
 	ionTreatment: "/ion-treatment",
 	keratinPerm: "/keratin-perm",
+	shampooTalk: "/shampoo-talk",
 	top: "/#top",
 	topMenu: "/#menu",
 	topKeratinPerm: "/#keratin-perm",
