@@ -1,41 +1,150 @@
-
-import { getMenuCategories } from "@/lib/contentful";
+import { PageFrame } from "@/components/page-frame";
+import { PageSection } from "@/components/page-section";
 import { buildMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
 
-export const metadata = buildMetadata({ title: buildPageTitle("Menu"), description: "メニューと料金をカテゴリごとに整理したページです。", path: "/menu" });
-export const revalidate = 60;
+export const metadata = buildMetadata({
+	title: buildPageTitle("メニュー・料金"),
+	description:
+		"カットガーデンMeiのカット・パーマ・縮毛矯正・カラー・ヘアエステのメニューと料金（税込）です。",
+	path: ROUTES.menu,
+});
 
-export default async function MenuPage() {
-  const categories = await getMenuCategories();
+function PriceRow({ label, price }: { label: string; price: string }) {
+	return (
+		<li className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-dotted border-[#d9cfc6] py-2">
+			<span>・{label}</span>
+			<span className="shrink-0 tabular-nums">{price}</span>
+		</li>
+	);
+}
 
-  return (
-    <>
-      <section className="px-4 py-20 md:px-6">
-        <div className="mx-auto w-full max-w-[1120px]">
-          <p className="max-w-3xl text-base leading-8 text-[#7e6b61]">WordPressの自由入力に依存しすぎず、カテゴリと項目を分けてContentfulで管理しやすい構成にしています。</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {categories.map((category) => (
-              <section key={category.slug} className="rounded-[28px] border border-[#73442b]/10 bg-white/80 p-7 shadow-[0_18px_40px_rgba(38,22,15,0.08)]">
-                <h2 className="text-2xl font-semibold text-[#26160f]">{category.name}</h2>
-                <p className="mt-3 text-base leading-8 text-[#7e6b61]">{category.description}</p>
-                <div className="mt-5 grid gap-5">
-                  {category.items.map((item) => (
-                    <article key={item.name} className="border-t border-[#73442b]/12 pt-5">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <h3 className="text-lg font-semibold text-[#26160f]">{item.name}</h3>
-                        <strong className="text-[#73442b]">{item.price}</strong>
-                      </div>
-                      <p className="mt-2 text-sm text-[#7e6b61]">{item.duration}</p>
-                      <p className="mt-2 text-base leading-8 text-[#7e6b61]">{item.description}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
+function MenuItemWithNote({
+	label,
+	price,
+	note,
+}: {
+	label: string;
+	price: string;
+	note?: string;
+}) {
+	return (
+		<li className="border-b border-dotted border-[#d9cfc6] py-3">
+			<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+				<span>・{label}</span>
+				<span className="shrink-0 tabular-nums">{price}</span>
+			</div>
+			{note ? (
+				<p className="mt-2 pl-1 text-sm leading-relaxed text-[#5c4a40]">{note}</p>
+			) : null}
+		</li>
+	);
+}
+
+export default function MenuPage() {
+	return (
+		<PageFrame
+			title="メニュー・料金"
+			outerClassName="bg-black"
+			backgroundImageSrc="/images/decoration/christmas-3.jpg"
+		>
+			<div className="mx-auto max-w-[760px] space-y-10">
+				<p className="text-base font-medium leading-8 text-black">
+					※メンズもすべて同一料金です（すべて税込み価格です）
+				</p>
+
+				<PageSection title="カット" contentClassName="space-y-0 text-base leading-8 text-black">
+					<ul className="list-none space-y-0 pl-0">
+						<PriceRow label="カット(S.B)" price="￥3,850" />
+						<PriceRow label="高校生(S.B)" price="￥3,350" />
+						<PriceRow label="中学生(S.B)" price="￥2,850" />
+						<PriceRow label="小学生(S.500)" price="￥1,850" />
+						<PriceRow label="だっこ" price="￥2,050" />
+						<PriceRow label="前髪カット" price="￥1,020" />
+						<PriceRow label="シャンプー＆ブロー" price="￥2,420" />
+					</ul>
+				</PageSection>
+
+				<PageSection title="パーマ" contentClassName="space-y-0 text-base leading-8 text-black">
+					<ul className="list-none space-y-0 pl-0">
+						<MenuItemWithNote
+							label="チオ"
+							price="￥7,700～"
+							note="（健康毛の方の一般的なパーマです）"
+						/>
+						<MenuItemWithNote
+							label="システィン"
+							price="￥8,580～"
+							note="（少し傷み気味の方におすすめです）"
+						/>
+						<MenuItemWithNote
+							label="イオントリートメントパーマ"
+							price="￥10,780～"
+							note="（傷めたくないけどしっかりとかけたい方に）"
+						/>
+						<MenuItemWithNote
+							label="形状記憶ケラチンパーマ"
+							price="￥12,650～"
+							note="（髪の主成分のケラチンのみでカールをつけます）"
+						/>
+						<MenuItemWithNote label="ストレート" price="￥9,350～" />
+					</ul>
+				</PageSection>
+
+				<PageSection title="縮毛矯正" contentClassName="space-y-0 text-base leading-8 text-black">
+					<ul className="list-none space-y-0 pl-0">
+						<PriceRow
+							label="クリニック縮毛矯正(ノンアイロン)"
+							price="￥21,450～"
+						/>
+					</ul>
+				</PageSection>
+
+				<PageSection title="カラー" contentClassName="space-y-0 text-base text-black">
+					<ul className="list-none space-y-0 pl-0 leading-8">
+						<MenuItemWithNote
+							label="イオントリートメントカラー"
+							price="￥7,480～"
+							note="（超おすすめ。ツヤツヤになります）"
+						/>
+						<PriceRow label="白髪染め" price="￥5,610～" />
+						<PriceRow label="おしゃれ" price="￥6,710～" />
+					</ul>
+					<p className="mt-4 leading-8">
+						★髪を傷めない為に、プレトリートメント（＋￥1,100）を推奨しています。
+					</p>
+					<ul className="mt-4 list-none space-y-0 pl-0 leading-8">
+						<PriceRow label="酸性カラー" price="￥7,700～" />
+					</ul>
+				</PageSection>
+
+				<PageSection
+					title="ヘアエステ(のみの場合＋￥2,200UP)"
+					contentClassName="space-y-0 text-base text-black"
+				>
+					<ul className="list-none space-y-0 pl-0 leading-8">
+						<MenuItemWithNote
+							label="ケラチンエステ"
+							price="￥4,620～"
+							note="（髪をケラチンで補強します）"
+						/>
+						<MenuItemWithNote
+							label="ケラチンアイロンエステ"
+							price="￥6,600～"
+							note="（縮毛矯正をされている方向けに、ケラチンで補強します）"
+						/>
+						<MenuItemWithNote
+							label="キューティクルエステ"
+							price="￥6,000～10,000前後"
+							note="（髪の内部補強とキューティクルの補強、人工のキューティクルを形成します。髪の状態により、施術内容が変わりますので、料金も変動します。）"
+						/>
+					</ul>
+					<p className="mt-6 leading-8">
+						★ヘアエステメニューに関しまして、お客様の損傷度合い等により、一人一人内容が変わりますので、施術行程と料金を施術前に提示させていただきます。
+					</p>
+				</PageSection>
+			</div>
+		</PageFrame>
+	);
 }

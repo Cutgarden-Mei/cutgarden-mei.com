@@ -20,7 +20,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },
 	{ href: ROUTES.shampooTalk, label: "シャンプーのお話" },
 	{ href: ROUTES.staff, label: "スタッフ紹介" },
-	{ href: "/", label: "メニュー・料金" },
+	{ href: ROUTES.menu, label: "メニュー・料金" },
 	{ href: ROUTES.resetCut, label: "リセットカット" },
 	{ href: ROUTES.oldDesignatedIngredients, label: "旧指定成分について" },
 	{ href: "/", label: "髪の基礎知識" },

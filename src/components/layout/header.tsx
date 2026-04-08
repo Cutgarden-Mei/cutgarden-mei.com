@@ -29,7 +29,7 @@ const NAV_ITEMS: NavItem[] = [
 	{ href: ROUTES.topClinicStraightening, label: "クリニック縮毛矯正" },
 	{ href: ROUTES.resetCut, label: "リセットカット" },
 	{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
-	{ href: ROUTES.topMenu, label: "メニュー" },
+	{ href: ROUTES.menu, label: "メニュー" },
 ];
 
 export async function Header() {
