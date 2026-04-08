@@ -1,11 +1,4 @@
-import {
-	Calendar,
-	ChevronDown,
-	ChevronRight,
-	ChevronUp,
-	FileText,
-	User,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
