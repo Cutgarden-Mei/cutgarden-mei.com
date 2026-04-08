@@ -9,6 +9,7 @@ export const ROUTES = {
 	siteMap: "/site-map",
 	hairBasics: "/hair-basics",
 	ionTreatment: "/ion-treatment",
+	keratinPerm: "/keratin-perm",
 	top: "/#top",
 	topMenu: "/#menu",
 	topKeratinPerm: "/#keratin-perm",
