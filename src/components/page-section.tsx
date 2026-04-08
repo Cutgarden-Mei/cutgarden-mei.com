@@ -16,7 +16,11 @@ export function PageSection({
 	return (
 		<section className={className ?? "space-y-5"}>
 			<PageSectionTitle>{title}</PageSectionTitle>
-			<div className={contentClassName ?? "space-y-4 text-[13px] leading-8 text-[#4f392d]"}>
+			<div
+				className={
+					contentClassName ?? "space-y-4 text-base leading-8 text-black"
+				}
+			>
 				{children}
 			</div>
 		</section>

@@ -30,7 +30,7 @@ export default function HairBasicsPage() {
 					</p>
 
 					<div className="space-y-4 text-center">
-						<p className="text-sm text-top-brown">＜髪の構造＞</p>
+						<p className="text-base text-black">＜髪の構造＞</p>
 						<div className="mx-auto w-full max-w-[350px]">
 							<Image
 								src="/images/touhi.jpg"
@@ -49,7 +49,7 @@ export default function HairBasicsPage() {
 					</p>
 
 					<div className="space-y-4 text-center">
-						<p className="text-sm text-top-brown">＜毛髪の構造＞</p>
+						<p className="text-base text-black">＜毛髪の構造＞</p>
 						<div className="mx-auto w-full max-w-[560px]">
 							<Image
 								src="/images/kouzou2.jpg"
