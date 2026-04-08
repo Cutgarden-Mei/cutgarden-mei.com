@@ -16,7 +16,7 @@ export default async function ContactPage() {
 			outerClassName="bg-black"
 			backgroundImageSrc="/images/decoration/christmas-3.jpg"
 		>
-			<div className="mx-auto max-w-[768px] space-y-5 text-[13px] leading-8 text-[#4f392d]">
+			<div className="mx-auto max-w-[768px] space-y-5 text-base leading-8 text-black">
 				<p>お問い合わせありがとうございます。</p>
 				<p>
 					フォームからのお問い合わせは、２４時間受け付けております。

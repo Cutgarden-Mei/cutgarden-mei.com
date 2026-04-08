@@ -93,7 +93,7 @@ export default async function SitemapPage() {
 		{ href: ROUTES.voice, label: "お客様の声" },
 		{ href: ROUTES.access, label: "アクセス" },
 		{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
-		{ href: ROUTES.topClinicStraightening, label: "クリニック縮毛矯正" },
+		{ href: ROUTES.clinicStraightening, label: "クリニック縮毛矯正" },
 		{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },
 		{ href: ROUTES.siteMap, label: "サイトマップ" },
 		{ href: ROUTES.shampooTalk, label: "シャンプーのお話" },
