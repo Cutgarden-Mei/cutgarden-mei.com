@@ -6,6 +6,7 @@ export const ROUTES = {
 	access: "/access",
 	contact: "/contact",
 	news: "/news",
+	blog: "/blog",
 	siteMap: "/site-map",
 	hairBasics: "/hair-basics",
 	ionTreatment: "/ion-treatment",
@@ -28,4 +29,8 @@ export function getStaffDetailRoute(slug: string) {
 
 export function getNewsDetailRoute(slug: string) {
 	return `${ROUTES.news}/${slug}`;
+}
+
+export function getArchiveMonthPath(yearMonth: string) {
+	return `/archive/${yearMonth}`;
 }

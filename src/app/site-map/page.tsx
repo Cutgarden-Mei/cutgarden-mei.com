@@ -114,7 +114,7 @@ export default async function SitemapPage() {
 				})),
 		},
 		{
-			href: ROUTES.news,
+			href: ROUTES.blog,
 			label: "ブログ",
 			children: posts
 				.filter((post) => post.type === "blog")

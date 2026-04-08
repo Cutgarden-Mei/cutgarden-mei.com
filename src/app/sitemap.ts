@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
 
 import { getPosts, getStaffMembers } from "@/lib/contentful";
-import { getNewsDetailRoute, getStaffDetailRoute, ROUTES } from "@/lib/routes";
+import {
+	getArchiveMonthPath,
+	getNewsDetailRoute,
+	getStaffDetailRoute,
+	ROUTES,
+} from "@/lib/routes";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -14,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ROUTES.access,
     ROUTES.contact,
     ROUTES.news,
+    ROUTES.blog,
     ROUTES.siteMap,
     ROUTES.hairBasics,
     ROUTES.ionTreatment,
@@ -25,5 +31,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map((path) => ({ url: `${siteUrl}${path}`, lastModified: new Date() }));
   const staffRoutes = staffMembers.map((member) => ({ url: `${siteUrl}${getStaffDetailRoute(member.slug)}`, lastModified: new Date() }));
   const newsRoutes = posts.map((post) => ({ url: `${siteUrl}${getNewsDetailRoute(post.slug)}`, lastModified: new Date(post.publishedAt) }));
-  return [...staticRoutes, ...staffRoutes, ...newsRoutes];
+  const archiveMonthKeys = new Set(posts.map((p) => p.publishedAt.slice(0, 7)));
+  const archiveRoutes = [...archiveMonthKeys].map((ym) => ({
+    url: `${siteUrl}${getArchiveMonthPath(ym)}`,
+    lastModified: new Date(),
+  }));
+  return [...staticRoutes, ...staffRoutes, ...newsRoutes, ...archiveRoutes];
 }

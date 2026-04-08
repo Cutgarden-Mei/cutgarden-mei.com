@@ -6,19 +6,19 @@ import { useState } from "react";
 import { Modal } from "@/components/modal";
 
 const VOICE_IMAGES = [
-	{ src: "/images/customer-voice/voice13.jpg", alt: "お客様の声 その13" },
-	{ src: "/images/customer-voice/voice12.jpg", alt: "お客様の声 その12" },
-	{ src: "/images/customer-voice/voice11.jpg", alt: "お客様の声 その11" },
-	{ src: "/images/customer-voice/voice10.jpg", alt: "お客様の声 その10" },
-	{ src: "/images/customer-voice/voice09.jpg", alt: "お客様の声 その9" },
-	{ src: "/images/customer-voice/voice08.jpg", alt: "お客様の声 その8" },
-	{ src: "/images/customer-voice/voice07.jpg", alt: "お客様の声 その7" },
-	{ src: "/images/customer-voice/voice06.jpg", alt: "お客様の声 その6" },
-	{ src: "/images/customer-voice/voice05.jpg", alt: "お客様の声 その5" },
-	{ src: "/images/customer-voice/voice04.jpg", alt: "お客様の声 その4" },
-	{ src: "/images/customer-voice/voice03.jpg", alt: "お客様の声 その3" },
-	{ src: "/images/customer-voice/voice02.jpg", alt: "お客様の声 その2" },
-	{ src: "/images/customer-voice/voice01.jpg", alt: "お客様の声 その1" },
+	{ src: "/images/customerVoice/voice13.jpg", alt: "お客様の声 その13" },
+	{ src: "/images/customerVoice/voice12.jpg", alt: "お客様の声 その12" },
+	{ src: "/images/customerVoice/voice11.jpg", alt: "お客様の声 その11" },
+	{ src: "/images/customerVoice/voice10.jpg", alt: "お客様の声 その10" },
+	{ src: "/images/customerVoice/voice09.jpg", alt: "お客様の声 その9" },
+	{ src: "/images/customerVoice/voice08.jpg", alt: "お客様の声 その8" },
+	{ src: "/images/customerVoice/voice07.jpg", alt: "お客様の声 その7" },
+	{ src: "/images/customerVoice/voice06.jpg", alt: "お客様の声 その6" },
+	{ src: "/images/customerVoice/voice05.jpg", alt: "お客様の声 その5" },
+	{ src: "/images/customerVoice/voice04.jpg", alt: "お客様の声 その4" },
+	{ src: "/images/customerVoice/voice03.jpg", alt: "お客様の声 その3" },
+	{ src: "/images/customerVoice/voice02.jpg", alt: "お客様の声 その2" },
+	{ src: "/images/customerVoice/voice01.jpg", alt: "お客様の声 その1" },
 ] as const;
 
 const IMAGE_SIZE = 550;

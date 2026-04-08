@@ -265,6 +265,11 @@ export async function getNewsPosts(): Promise<NewsPost[]> {
   return posts.filter((post) => post.type === "news");
 }
 
+export async function getBlogPosts(): Promise<Post[]> {
+  const posts = await getPosts();
+  return posts.filter((post) => post.type === "blog");
+}
+
 export async function getNewsPostBySlug(slug: string): Promise<NewsPost | null> {
   const post = await getPostBySlug(slug);
   return post?.type === "news" ? post : null;
