@@ -14,7 +14,7 @@ type FooterSectionTitleProps = {
 };
 
 const PAGE_LINK_ITEMS: PageLinkItem[] = [
-	{ href: "/", label: "お客様の声" },
+	{ href: ROUTES.voice, label: "お客様の声" },
 	{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
 	{ href: ROUTES.clinicStraightening, label: "クリニック縮毛矯正" },
 	{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },

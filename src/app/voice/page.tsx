@@ -1,39 +1,39 @@
-import { getVoices } from "@/lib/contentful";
+import { CustomerVoiceGallery } from "@/components/customer-voice-gallery";
+import { PageFrame } from "@/components/page-frame";
 import { buildMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
 
 export const metadata = buildMetadata({
-	title: buildPageTitle("Voice"),
-	description: "お客様の声一覧ページです。",
-	path: "/voice",
+	title: buildPageTitle("お客様の声"),
+	description:
+		"カットガーデンMeiにいただいたお客様の声をご紹介します。画像をタップすると拡大してご覧いただけます。",
+	path: ROUTES.voice,
 });
-export const revalidate = 60;
 
-export default async function VoicePage() {
-	const voices = await getVoices();
-
+export default function VoicePage() {
 	return (
-		<>
-			<section className="px-4 py-20 md:px-6">
-				<div className="mx-auto grid w-full max-w-[1120px] gap-4 md:grid-cols-2">
-					{voices.map((voice) => (
-						<article
-							key={`${voice.customerName}-${voice.menuLabel}`}
-							className="rounded-[28px] border border-[#73442b]/10 bg-white/80 p-7 shadow-[0_18px_40px_rgba(38,22,15,0.08)]"
-						>
-							<p className="font-serif text-xs uppercase tracking-[0.18em] text-[#73442b]">
-								{voice.menuLabel}
-							</p>
-							<h2 className="mt-3 text-2xl font-semibold text-[#26160f]">
-								{voice.customerName}
-							</h2>
-							<p className="mt-4 text-base leading-8 text-[#7e6b61]">
-								{voice.comment}
-							</p>
-						</article>
-					))}
+		<PageFrame
+			title="お客様の声"
+			outerClassName="bg-black"
+			backgroundImageSrc="/images/decoration/christmas-3.jpg"
+		>
+			<div className="mx-auto max-w-[760px] space-y-8">
+				<div className="space-y-4 text-base leading-8 text-black">
+					<p>
+						大事なお客様から数多くのご感想をいただいております。ありがとうございます。
+					</p>
+					<p>承諾いただいたお客様のお声を掲載させていただきます。</p>
+					<p>
+						今後もお気づきの点、ご意見がございましたらお気軽にご連絡ください。
+					</p>
+					<p className="text-sm text-[#5c4a40]">
+						（※クリックすると拡大画像をご覧いただけます。）
+					</p>
 				</div>
-			</section>
-		</>
+
+				<CustomerVoiceGallery />
+			</div>
+		</PageFrame>
 	);
 }
