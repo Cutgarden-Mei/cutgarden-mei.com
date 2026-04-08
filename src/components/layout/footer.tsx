@@ -96,22 +96,24 @@ export async function Footer() {
 				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
 					<div className="flex flex-col gap-2">
-						<Link href={ROUTES.home} className="hover:underline">
+						<Link href={ROUTES.home} className="inline-block hover:opacity-90">
 							<Image
 								src="/images/footer/facebook.png"
-								alt="facebook"
-								width={100}
+								alt="Facebook"
+								width={300}
 								height={100}
-								className="w-full h-10"
+								quality={90}
+								className="h-24 w-auto max-w-full object-contain"
 							/>
 						</Link>
-						<Link href={ROUTES.home} className="hover:underline">
+						<Link href={ROUTES.home} className="inline-block hover:opacity-90">
 							<Image
 								src="/images/footer/line.png"
-								alt="line"
-								width={100}
+								alt="LINE"
+								width={300}
 								height={100}
-								className="w-full h-10"
+								quality={90}
+								className="h-24 w-auto max-w-full object-contain"
 							/>
 						</Link>
 					</div>
