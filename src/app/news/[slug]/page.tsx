@@ -185,9 +185,7 @@ export default async function NewsDetailPage({
 												aria-current={
 													item.slug === post.slug ? "page" : undefined
 												}
-												className={`inline-flex gap-1.5 leading-snug text-top-pink transition hover:underline ${
-													item.slug === post.slug ? "font-semibold opacity-100" : ""
-												}`}
+												className={`inline-flex gap-1.5 leading-snug text-top-pink transition hover:underline`}
 											>
 												<span>{item.title}</span>
 											</Link>
