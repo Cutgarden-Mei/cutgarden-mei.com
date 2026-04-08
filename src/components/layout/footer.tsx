@@ -22,7 +22,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: "/", label: "スタッフ紹介" },
 	{ href: "/", label: "メニュー・料金" },
 	{ href: ROUTES.resetCut, label: "リセットカット" },
-	{ href: "/", label: "旧指定成分について" },
+	{ href: ROUTES.oldDesignatedIngredients, label: "旧指定成分について" },
 	{ href: "/", label: "髪の基礎知識" },
 ];
 

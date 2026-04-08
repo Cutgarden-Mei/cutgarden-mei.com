@@ -12,6 +12,7 @@ export const ROUTES = {
 	keratinPerm: "/keratin-perm",
 	shampooTalk: "/shampoo-talk",
 	resetCut: "/reset-cut",
+	oldDesignatedIngredients: "/old-designated-ingredients",
 	top: "/#top",
 	topMenu: "/#menu",
 	topKeratinPerm: "/#keratin-perm",
