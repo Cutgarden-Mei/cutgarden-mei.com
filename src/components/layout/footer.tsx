@@ -21,7 +21,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: ROUTES.shampooTalk, label: "シャンプーのお話" },
 	{ href: "/", label: "スタッフ紹介" },
 	{ href: "/", label: "メニュー・料金" },
-	{ href: "/", label: "リセットカット" },
+	{ href: ROUTES.resetCut, label: "リセットカット" },
 	{ href: "/", label: "旧指定成分について" },
 	{ href: "/", label: "髪の基礎知識" },
 ];

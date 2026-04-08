@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ROUTES.ionTreatment,
     ROUTES.keratinPerm,
     ROUTES.shampooTalk,
+    ROUTES.resetCut,
   ].map((path) => ({ url: `${siteUrl}${path}`, lastModified: new Date() }));
   const staffRoutes = staffMembers.map((member) => ({ url: `${siteUrl}${getStaffDetailRoute(member.slug)}`, lastModified: new Date() }));
   const newsRoutes = posts.map((post) => ({ url: `${siteUrl}${getNewsDetailRoute(post.slug)}`, lastModified: new Date(post.publishedAt) }));
