@@ -275,9 +275,14 @@ export default async function NewsDetailPage({
 										href={getNewsDetailRoute(newerPost.slug)}
 										className="inline-flex items-center gap-2 transition hover:opacity-70"
 									>
-										<span className="flex h-7 w-7 items-center justify-center rounded-full border border-current text-[11px]">
-											‹
-										</span>
+										<Image
+											src="/images/decoration/circle-up.png"
+											alt=""
+											width={28}
+											height={28}
+											className="h-7 w-7 shrink-0 -rotate-90"
+											aria-hidden
+										/>
 										<span>NEW</span>
 									</Link>
 								) : (
@@ -290,9 +295,14 @@ export default async function NewsDetailPage({
 										className="inline-flex items-center gap-2 transition hover:opacity-70"
 									>
 										<span>PREV</span>
-										<span className="flex h-7 w-7 items-center justify-center rounded-full border border-current text-[11px]">
-											›
-										</span>
+										<Image
+											src="/images/decoration/circle-up.png"
+											alt=""
+											width={28}
+											height={28}
+											className="h-7 w-7 shrink-0 rotate-90"
+											aria-hidden
+										/>
 									</Link>
 								) : (
 									<span />

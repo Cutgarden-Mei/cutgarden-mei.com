@@ -3,6 +3,7 @@ import { Noto_Serif_JP } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { ScrollToTopButton } from "@/components/layout/scroll-to-top-button";
 import { getSiteSettings } from "@/lib/contentful";
 
 import "./globals.css";
@@ -32,6 +33,7 @@ export default function RootLayout({
 				<Header />
 				<main className="bg-white">{children}</main>
 				<Footer />
+				<ScrollToTopButton />
 			</body>
 		</html>
 	);

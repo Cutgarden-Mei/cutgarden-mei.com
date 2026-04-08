@@ -95,7 +95,7 @@ function normalizeBody(value: unknown): string[] {
 }
 
 function getPostCategory(type: HomeUpdatePostType): string {
-  return type === "blog" ? "記事" : "お知らせ";
+  return type === "blog" ? "ブログ" : "お知らせ";
 }
 
 function sortPostsByPublishedAt(posts: Post[]): Post[] {
@@ -275,16 +275,33 @@ export async function getNewsPostBySlug(slug: string): Promise<NewsPost | null> 
   return post?.type === "news" ? post : null;
 }
 
-export async function getHomeUpdatePosts(limit = 10): Promise<HomeUpdatePost[]> {
-  const posts = await getPosts();
-
-  return posts.slice(0, limit).map((post) => ({
+function mapPostToHomeUpdate(post: Post): HomeUpdatePost {
+  return {
     id: post.slug,
     slug: post.slug,
     title: post.title,
     type: post.type,
     publishedAt: post.publishedAt,
-  }));
+  };
+}
+
+/** 日付順の全投稿から、タイプごとに最大 limitPerType 件ずつ返す（混在スライスによる欠落を防ぐ） */
+export async function getHomeUpdatePosts(limitPerType = 5): Promise<{
+  news: HomeUpdatePost[];
+  blog: HomeUpdatePost[];
+}> {
+  const posts = await getPosts();
+
+  return {
+    news: posts
+      .filter((post) => post.type === "news")
+      .slice(0, limitPerType)
+      .map(mapPostToHomeUpdate),
+    blog: posts
+      .filter((post) => post.type === "blog")
+      .slice(0, limitPerType)
+      .map(mapPostToHomeUpdate),
+  };
 }
 export async function getAccessInfo(): Promise<AccessInfo> { return accessInfo; }
 export async function getContactSettings(): Promise<ContactSettings> { return contactSettings; }

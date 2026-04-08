@@ -95,25 +95,33 @@ export async function Footer() {
 				</div>
 				<div className="w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
-					<div className="flex flex-col gap-2">
-						<Link href={ROUTES.home} className="inline-block hover:opacity-90">
+					<div className="flex min-w-0 flex-col gap-2">
+						<Link
+							href={ROUTES.home}
+							className="block w-full hover:opacity-90"
+						>
 							<Image
 								src="/images/footer/facebook.png"
 								alt="Facebook"
 								width={300}
 								height={100}
 								quality={90}
-								className="h-24 w-auto max-w-full object-contain"
+								sizes="(max-width: 768px) 100vw, 352px"
+								className="h-auto w-full object-contain"
 							/>
 						</Link>
-						<Link href={ROUTES.home} className="inline-block hover:opacity-90">
+						<Link
+							href={ROUTES.home}
+							className="block w-full hover:opacity-90"
+						>
 							<Image
 								src="/images/footer/line.png"
 								alt="LINE"
 								width={300}
 								height={100}
 								quality={90}
-								className="h-24 w-auto max-w-full object-contain"
+								sizes="(max-width: 768px) 100vw, 352px"
+								className="h-auto w-full object-contain"
 							/>
 						</Link>
 					</div>

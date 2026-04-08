@@ -4,6 +4,7 @@ import Link from "next/link";
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 import { getHomeUpdatePosts } from "@/lib/contentful";
+import { getNewsDetailRoute } from "@/lib/routes";
 
 type HomeUpdatesListItemProps = {
 	id: string;
@@ -52,23 +53,17 @@ function HomeUpdatesColumn({ title, items }: HomeUpdatesColumnProps) {
 }
 
 export async function HomeUpdatesSection() {
-	const posts = await getHomeUpdatePosts();
-	const noticeItems = posts
-		.filter((post) => post.type === "news")
-		.slice(0, 5)
-		.map((post) => ({
-			id: post.id,
-			href: `/news/${post.slug}`,
-			title: post.title,
-		}));
-	const articleItems = posts
-		.filter((post) => post.type === "blog")
-		.slice(0, 5)
-		.map((post) => ({
-			id: post.id,
-			href: `/news/${post.slug}`,
-			title: post.title,
-		}));
+	const { news, blog } = await getHomeUpdatePosts();
+	const noticeItems = news.map((post) => ({
+		id: post.id,
+		href: getNewsDetailRoute(post.slug),
+		title: post.title,
+	}));
+	const articleItems = blog.map((post) => ({
+		id: post.id,
+		href: getNewsDetailRoute(post.slug),
+		title: post.title,
+	}));
 
 	return (
 		<TopSectionContainer className="py-14">
