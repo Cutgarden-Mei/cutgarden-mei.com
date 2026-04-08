@@ -19,7 +19,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: "/", label: "クリニック縮毛矯正" },
 	{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },
 	{ href: ROUTES.shampooTalk, label: "シャンプーのお話" },
-	{ href: "/", label: "スタッフ紹介" },
+	{ href: ROUTES.staff, label: "スタッフ紹介" },
 	{ href: "/", label: "メニュー・料金" },
 	{ href: ROUTES.resetCut, label: "リセットカット" },
 	{ href: ROUTES.oldDesignatedIngredients, label: "旧指定成分について" },
