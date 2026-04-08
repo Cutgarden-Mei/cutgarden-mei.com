@@ -41,6 +41,25 @@ body {
 	background: linear-gradient(180deg, #fff8f5 0%, #f7f2ee 100%);
 }
 
+@keyframes hero-char-reveal {
+	from {
+		opacity: 0;
+		transform: translateY(0.2em);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-char {
+		animation: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
+
 a {
 	text-decoration: none;
 }

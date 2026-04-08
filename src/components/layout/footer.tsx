@@ -23,7 +23,7 @@ const PAGE_LINK_ITEMS: PageLinkItem[] = [
 	{ href: ROUTES.menu, label: "メニュー・料金" },
 	{ href: ROUTES.resetCut, label: "リセットカット" },
 	{ href: ROUTES.oldDesignatedIngredients, label: "旧指定成分について" },
-	{ href: "/", label: "髪の基礎知識" },
+	{ href: ROUTES.hairBasics, label: "髪の基礎知識" },
 ];
 
 const FOOTER_NAV_ITEMS: PageLinkItem[] = [
