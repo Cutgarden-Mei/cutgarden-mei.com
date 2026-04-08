@@ -1,38 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { HeaderNav } from "@/components/layout/header-nav";
 import { ROUTES } from "@/lib/routes";
 
-type NavItem = {
-	href: string;
-	label: string;
-	icon?: {
-		src: string;
-		alt: string;
-		width: number;
-		height: number;
-	};
-};
-
-const NAV_ITEMS: NavItem[] = [
-	{
-		href: ROUTES.top,
-		label: "ホーム",
-		icon: {
-			src: "/images/header/home.png",
-			alt: "home",
-			width: 24,
-			height: 24,
-		},
-	},
-	{ href: ROUTES.keratinPerm, label: "ケラチンパーマ" },
-	{ href: ROUTES.clinicStraightening, label: "クリニック縮毛矯正" },
-	{ href: ROUTES.resetCut, label: "リセットカット" },
-	{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
-	{ href: ROUTES.menu, label: "メニュー" },
-];
-
-export async function Header() {
+export function Header() {
 	return (
 		<header className="sticky z-50 flex w-full flex-col items-center justify-between bg-header-bg">
 			<div className="mx-auto flex w-full max-w-[1056px] items-center justify-between py-2">
@@ -85,26 +57,7 @@ export async function Header() {
 				</div>
 			</div>
 			<div className="w-full bg-header-nav">
-				<ul className="flex items-center max-w-[1056px] mx-auto text-white text-sm">
-					{NAV_ITEMS.map((item) => (
-						<li key={item.label} className="w-full">
-							<Link
-								href={item.href}
-								className="group flex items-center justify-center gap-2 py-4 text-center hover:bg-header-nav-hover"
-							>
-								{item.icon ? (
-									<Image
-										src={item.icon.src}
-										alt={item.icon.alt}
-										width={item.icon.width}
-										height={item.icon.height}
-									/>
-								) : null}
-								<span className="group-hover:underline">{item.label}</span>
-							</Link>
-						</li>
-					))}
-				</ul>
+				<HeaderNav />
 			</div>
 		</header>
 	);
