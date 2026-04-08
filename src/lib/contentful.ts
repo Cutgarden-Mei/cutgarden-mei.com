@@ -90,7 +90,15 @@ function normalizeBody(value: unknown): string[] {
   }
 
   return value.content
-    .map((node) => getRichTextNodeText(node as RichTextNode).replace(/\s+/g, " ").trim())
+    .map((node) => {
+      const text = getRichTextNodeText(node as RichTextNode)
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        // 改行は残し、改行以外の連続空白のみ1スペースに畳む
+        .replace(/[^\S\n]+/g, " ")
+        .trim();
+      return text;
+    })
     .filter((paragraph): paragraph is string => paragraph.length > 0);
 }
 

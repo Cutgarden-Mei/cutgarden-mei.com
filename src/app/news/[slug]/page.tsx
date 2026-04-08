@@ -1,4 +1,11 @@
-import { Calendar, ChevronRight, FileText, User } from "lucide-react";
+import {
+	Calendar,
+	ChevronDown,
+	ChevronRight,
+	ChevronUp,
+	FileText,
+	User,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,6 +19,15 @@ import type { HomeUpdatePostType, Post } from "@/lib/types";
 export const revalidate = 60;
 
 const POST_AUTHOR_LABEL = "管理者";
+
+const SIDEBAR_CATEGORY_ITEMS: {
+	href: string;
+	label: string;
+	postType: HomeUpdatePostType;
+}[] = [
+	{ href: ROUTES.news, label: "お知らせ", postType: "news" },
+	{ href: ROUTES.blog, label: "ブログ", postType: "blog" },
+];
 
 function formatShortYmd(value: string) {
 	const date = new Date(value);
@@ -71,14 +87,14 @@ export async function generateMetadata({
 		return buildMetadata({
 			title: buildPageTitle("Post"),
 			description: "投稿詳細ページです。",
-			path: `/news/${slug}`,
+			path: `${ROUTES.news}/${slug}`,
 		});
 	}
 
 	return buildMetadata({
 		title: buildPageTitle(post.title),
 		description: post.excerpt,
-		path: `/news/${slug}`,
+		path: `${ROUTES.news}/${slug}`,
 	});
 }
 
@@ -197,10 +213,19 @@ export default async function NewsDetailPage({
 							</ul>
 						</div>
 
-						<div className="overflow-hidden border-t-4 border-[#7a3a12] bg-[#fffdfa] shadow-sm">
-							<div className="bg-[#f2f2f2] px-3 py-2 text-sm font-bold text-black">
-								アーカイブ
-							</div>
+						<details className="group overflow-hidden border-t-4 border-[#7a3a12] bg-[#fffdfa] shadow-sm">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-2 bg-[#f2f2f2] px-3 py-2 text-sm font-bold text-black [&::-webkit-details-marker]:hidden">
+								<span>アーカイブ</span>
+								<span className="text-top-brown group-open:hidden" aria-hidden>
+									<ChevronDown className="h-4 w-4" />
+								</span>
+								<span
+									className="hidden text-top-brown group-open:inline"
+									aria-hidden
+								>
+									<ChevronUp className="h-4 w-4" />
+								</span>
+							</summary>
 							<ul className="max-h-[420px] overflow-y-auto px-3 py-2 text-sm">
 								{archiveItems.map((item) => (
 									<li
@@ -223,6 +248,34 @@ export default async function NewsDetailPage({
 									</li>
 								))}
 							</ul>
+						</details>
+
+						<div className="overflow-hidden border-t-4 border-[#7a3a12] bg-[#fffdfa] shadow-sm">
+							<div className="bg-[#f2f2f2] px-3 py-2 text-sm font-bold text-black">
+								カテゴリー
+							</div>
+							<ul className="px-3 py-2 text-sm">
+								{SIDEBAR_CATEGORY_ITEMS.map((item) => (
+									<li
+										key={item.href}
+										className="border-b border-dotted border-[#ead8cf] py-2 last:border-b-0"
+									>
+										<Link
+											href={item.href}
+											aria-current={
+												post.type === item.postType ? "page" : undefined
+											}
+											className={`inline-flex w-full items-center gap-1.5 text-left transition text-top-pink`}
+										>
+											<ChevronRight
+												className="h-4 w-4 shrink-0 text-top-pink"
+												aria-hidden
+											/>
+											<span>{item.label}</span>
+										</Link>
+									</li>
+								))}
+							</ul>
 						</div>
 					</aside>
 
@@ -231,36 +284,53 @@ export default async function NewsDetailPage({
 						<article className="overflow-hidden bg-white shadow-[0_10px_28px_rgba(61,27,0,0.08)] border-t-4 border-[#7a3a12]">
 							<div className="flex flex-wrap items-center justify-between gap-3 bg-[#f2f2f2] px-4 py-3 md:px-6">
 								<p className="inline-flex items-center gap-2 text-sm text-[#4a3d36]">
-									<Calendar
-										className="h-4 w-4 shrink-0 text-top-pink"
-										aria-hidden
+									<Image
+										src="/images/decoration/calendar.png"
+										alt=""
+										width={14}
+										height={14}
+										className="h-[14px] w-[14px]"
 									/>
 									<time dateTime={post.publishedAt}>
 										{formatShortYmd(post.publishedAt)}
 									</time>
 								</p>
 								<p className="inline-flex items-center gap-2 text-sm text-[#4a3d36]">
-									<User
-										className="h-4 w-4 shrink-0 text-top-pink"
-										aria-hidden
+									<Image
+										src="/images/decoration/author.png"
+										alt=""
+										width={14}
+										height={14}
+										className="h-[14px] w-[14px]"
 									/>
 									<span>{POST_AUTHOR_LABEL}</span>
 								</p>
 							</div>
 
-							<div className="px-4 py-5 md:px-8 md:py-6">
+							<div className="px-4 py-5 md:px-8 md:py-6 border-b border-[#d5c5ba]">
 								<h1 className="text-base leading-snug font-bold text-black md:leading-tight md:text-[20px] font-serif">
 									{displayTitle(post.title)}
 								</h1>
-								<div className="mt-4 inline-flex items-center gap-2 rounded border border-top-pink px-3 py-1.5 text-xs font-medium text-top-pink md:text-sm">
-									<FileText className="h-3.5 w-3.5 shrink-0" aria-hidden />
+								<div className="mt-4 inline-flex items-center gap-2 rounded px-3 py-1.5 text-xs font-medium text-top-pink md:text-sm">
+									<Image
+										src="/images/decoration/file-category.png"
+										alt=""
+										width={14}
+										height={14}
+										className="h-[14px] w-[14px]"
+									/>
 									<span>{getCategoryTagLabel(post)}</span>
 								</div>
 							</div>
 
 							<div className="space-y-5 px-4 py-6 text-[15px] leading-[1.9] text-[#3d332d] md:px-8 md:py-8 md:text-base md:leading-8">
 								{paragraphs.map((paragraph, index) => (
-									<p key={`${post.slug}-${index}`}>{paragraph}</p>
+									<p
+										key={`${post.slug}-${index}`}
+										className="whitespace-pre-line"
+									>
+										{paragraph}
+									</p>
 								))}
 							</div>
 
