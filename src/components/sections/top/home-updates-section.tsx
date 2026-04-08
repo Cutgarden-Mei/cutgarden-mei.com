@@ -27,14 +27,14 @@ function HomeUpdatesListItem({ href, title }: HomeUpdatesListItemProps) {
 
 function HomeUpdatesColumn({ title, items }: HomeUpdatesColumnProps) {
 	return (
-		<div className="flex flex-col items-center justify-center gap-1">
+		<div className="flex flex-col items-center justify-center gap-1 w-full md:w-auto">
 			<DecoratedTextRow
 				text={title}
 				iconSrc="/images/decoration/clip-blue.png"
 				iconAlt=""
 				textClassName="font-bold font-serif"
 			/>
-			<ul className="flex flex-col gap-1 w-[400px] rounded-[4px] border-4 border-contact-panel p-[4px] pt-[8px]">
+			<ul className="flex flex-col gap-1 w-full md:w-[400px] rounded-[4px] border-4 border-contact-panel p-[4px] pt-[8px]">
 				{items.length > 0 ? (
 					items.map((item) => (
 						<HomeUpdatesListItem
@@ -87,7 +87,7 @@ export async function HomeUpdatesSection() {
 						/>
 					</button>
 				</div>
-				<div className="flex gap-4 items-start">
+				<div className="flex gap-4 items-start md:flex-row flex-col w-full md:justify-center px-[37.5px]">
 					<HomeUpdatesColumn title="最新のおしらせ" items={noticeItems} />
 					<HomeUpdatesColumn title="最新の記事" items={articleItems} />
 				</div>

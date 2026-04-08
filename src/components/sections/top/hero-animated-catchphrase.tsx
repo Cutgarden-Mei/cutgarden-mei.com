@@ -10,7 +10,7 @@ export function HeroAnimatedCatchphrase() {
 	let delayIndex = 0;
 
 	return (
-		<p className="absolute top-0 bottom-0 left-0 z-10 m-auto h-fit font-serif text-6xl leading-loose font-bold text-black">
+		<p className="absolute top-0 bottom-0 left-0 z-10 m-auto h-fit font-serif md:text-6xl text-[32px] leading-loose font-bold text-black ml-2 md:ml-0">
 			{Array.from(LINE_FIRST).map((char) => {
 				const i = delayIndex++;
 				return (

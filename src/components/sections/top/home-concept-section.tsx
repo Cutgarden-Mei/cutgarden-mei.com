@@ -21,9 +21,9 @@ const CONCEPT_GALLERY_ITEMS: ImageZoomGalleryItem[] = [
 
 export function HomeConceptSection() {
 	return (
-		<TopSectionContainer className="py-14">
+		<TopSectionContainer className="py-14 md:px-0 px-[37.5px]">
 			<div className="flex flex-col gap-10">
-				<h2 className="text-center text-[28px] font-black font-serif">
+				<h2 className="text-center md:text-[28px] text-[22px] font-black font-serif">
 					カットガーデンMeiは、大阪市平野区のアットホームな美容室です。
 				</h2>
 				<ImageZoomGallery
@@ -38,7 +38,7 @@ export function HomeConceptSection() {
 					modalImageClassName="h-auto w-full object-contain"
 					modalImageSizes="(max-width: 720px) 90vw, 640px"
 				/>
-				<p className="mx-auto w-[760px] leading-loose">
+				<p className="mx-auto w-full md:w-[760px] leading-loose">
 					縮毛矯正やパーマ、カラーでボロボロになってしまった髪にお悩みの方、当店では研究を怠らず、髪に『本当に良いもの』をご提供いたしております。
 					<br />
 					クリニック縮毛矯正、ケラチンパーマ、イオントリートメントをぜひお試しください。メンズも各種同一料金です。お気軽にお越し下さい。

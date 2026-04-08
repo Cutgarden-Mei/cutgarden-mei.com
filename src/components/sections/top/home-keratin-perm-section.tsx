@@ -5,7 +5,7 @@ import { TopSectionLink } from "@/components/sections/top/top-section-link";
 
 export function HomeKeratinPermSection() {
 	return (
-		<TopSectionContainer className="py-14">
+		<TopSectionContainer className="py-14 md:px-0 px-[37.5px]">
 			<div className="flex flex-col items-center justify-center gap-10">
 				<DecoratedSectionTitle
 					title="ケラチンパーマ"

@@ -12,7 +12,7 @@ export function DecoratedSectionTitle({
 	iconAlt,
 }: DecoratedSectionTitleProps) {
 	return (
-		<h2 className="flex gap-1 text-center text-[28px] font-bold font-serif">
+		<h2 className="flex gap-1 text-center md:text-[28px] text-[22px] font-bold font-serif">
 			<Image src={iconSrc} alt={iconAlt} width={28} height={28} />
 			{title}
 		</h2>

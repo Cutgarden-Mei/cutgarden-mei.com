@@ -8,7 +8,7 @@ export function TopSectionContainer({
 	className = "",
 }: TopSectionContainerProps) {
 	return (
-		<section className={`mx-auto max-w-[1056px] ${className}`.trim()}>
+		<section className={`mx-auto w-full md:max-w-[1056px] ${className}`.trim()}>
 			{children}
 		</section>
 	);

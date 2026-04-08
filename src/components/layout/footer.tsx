@@ -48,8 +48,8 @@ export async function Footer() {
 
 	return (
 		<footer className="bg-[#321600] text-white">
-			<div className="max-w-[1056px] mx-auto flex items-start justify-center pt-6 pb-12 gap-16">
-				<div className="w-1/3 flex flex-col gap-4">
+			<div className="max-w-[1056px] mx-auto flex md:flex-row flex-col items-start justify-center pt-6 pb-12 gap-16 px-[37.5px] md:px-0">
+				<div className="w-full md:w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>ページ</FooterSectionTitle>
 					<ul className="text-sm flex flex-col gap-4">
 						{PAGE_LINK_ITEMS.map((item) => (
@@ -71,7 +71,7 @@ export async function Footer() {
 						))}
 					</ul>
 				</div>
-				<div className="w-1/3 flex flex-col gap-4">
+				<div className="w-full md:w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>最新記事</FooterSectionTitle>
 					<ul className="text-sm flex flex-col gap-2">
 						{footerArticles.map((item) => (
@@ -93,13 +93,10 @@ export async function Footer() {
 						))}
 					</ul>
 				</div>
-				<div className="w-1/3 flex flex-col gap-4">
+				<div className="w-full md:w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
 					<div className="flex min-w-0 flex-col gap-2">
-						<Link
-							href={ROUTES.home}
-							className="block w-full hover:opacity-90"
-						>
+						<Link href={ROUTES.home} className="block w-full hover:opacity-90">
 							<Image
 								src="/images/footer/facebook.png"
 								alt="Facebook"
@@ -110,10 +107,7 @@ export async function Footer() {
 								className="h-auto w-full object-contain"
 							/>
 						</Link>
-						<Link
-							href={ROUTES.home}
-							className="block w-full hover:opacity-90"
-						>
+						<Link href={ROUTES.home} className="block w-full hover:opacity-90">
 							<Image
 								src="/images/footer/line.png"
 								alt="LINE"
@@ -127,8 +121,8 @@ export async function Footer() {
 					</div>
 				</div>
 			</div>
-			<div className="w-full justify-center py-2 bg-[#1E0D00]">
-				<ul className="flex items-center gap-2 w-full justify-between py-2 max-w-[1056px] mx-auto text-sm">
+			<div className="w-full justify-center bg-[#1E0D00] px-3 py-2 md:px-4">
+				<ul className="mx-auto flex w-full max-w-[1056px] flex-wrap items-center gap-x-3 gap-y-2 py-2 pr-24 text-sm justify-start md:justify-between md:gap-2 md:pr-0">
 					{FOOTER_NAV_ITEMS.map((item) => (
 						<Link key={item.label} href={item.href} className="group">
 							<li className="group-hover:underline">{item.label}</li>

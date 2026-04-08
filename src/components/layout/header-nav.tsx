@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { ROUTES } from "@/lib/routes";
 
-type NavItem = {
+export type HeaderNavItem = {
 	href: string;
 	label: string;
 	icon?: {
@@ -17,7 +17,7 @@ type NavItem = {
 	};
 };
 
-const TOP_NAV_ITEMS: NavItem[] = [
+export const TOP_NAV_ITEMS: HeaderNavItem[] = [
 	{
 		href: ROUTES.top,
 		label: "ホーム",
@@ -35,7 +35,7 @@ const TOP_NAV_ITEMS: NavItem[] = [
 	{ href: ROUTES.topMenu, label: "メニュー" },
 ];
 
-const SUBPAGE_NAV_ITEMS: NavItem[] = [
+export const SUBPAGE_NAV_ITEMS: HeaderNavItem[] = [
 	{
 		href: ROUTES.home,
 		label: "ホーム",
@@ -57,7 +57,7 @@ export function HeaderNav() {
 	const items = isTop ? TOP_NAV_ITEMS : SUBPAGE_NAV_ITEMS;
 
 	return (
-		<ul className="mx-auto flex max-w-[1056px] items-center text-sm text-white">
+		<ul className="mx-auto flex max-w-[1056px] flex-row items-center text-sm text-white">
 			{items.map((item) => (
 				<li key={item.label} className="w-full">
 					<Link
