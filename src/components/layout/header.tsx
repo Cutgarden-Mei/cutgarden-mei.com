@@ -28,7 +28,7 @@ const NAV_ITEMS: NavItem[] = [
 	{ href: ROUTES.topKeratinPerm, label: "ケラチンパーマ" },
 	{ href: ROUTES.topClinicStraightening, label: "クリニック縮毛矯正" },
 	{ href: ROUTES.topResetCut, label: "リセットカット" },
-	{ href: ROUTES.topIonTreatment, label: "イオントリートメント" },
+	{ href: ROUTES.ionTreatment, label: "イオントリートメント" },
 	{ href: ROUTES.topMenu, label: "メニュー" },
 ];
 

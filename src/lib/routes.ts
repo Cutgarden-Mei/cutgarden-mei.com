@@ -8,6 +8,7 @@ export const ROUTES = {
 	news: "/news",
 	siteMap: "/site-map",
 	hairBasics: "/hair-basics",
+	ionTreatment: "/ion-treatment",
 	top: "/#top",
 	topMenu: "/#menu",
 	topKeratinPerm: "/#keratin-perm",
