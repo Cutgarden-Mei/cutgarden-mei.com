@@ -2,6 +2,7 @@ import { DecoratedSectionTitle } from "@/components/sections/decorated-section-t
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 import { TopSectionLink } from "@/components/sections/top/top-section-link";
+import { ROUTES } from "@/lib/routes";
 
 export function HomeKeratinPermSection() {
 	return (
@@ -43,7 +44,7 @@ export function HomeKeratinPermSection() {
 						iconAlt="clip"
 					/>
 				</div>
-				<TopSectionLink href="/">詳しくはこちらから</TopSectionLink>
+				<TopSectionLink href={ROUTES.keratinPerm}>詳しくはこちらから</TopSectionLink>
 			</div>
 		</TopSectionContainer>
 	);

@@ -1,6 +1,7 @@
 import { DecoratedSectionTitle } from "@/components/sections/decorated-section-title";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 import { TopSectionLink } from "@/components/sections/top/top-section-link";
+import { ROUTES } from "@/lib/routes";
 
 export function HomeIonTreatmentSection() {
 	return (
@@ -18,7 +19,7 @@ export function HomeIonTreatmentSection() {
 				<p className="max-w-[768px]">
 					ミネラルイオンの力と、pHコントロールによって、髪の内部に水分をたっぷり補給・定着させることで、驚くほどの「ツヤ」がでます！
 				</p>
-				<TopSectionLink href="/">詳しくはこちらから</TopSectionLink>
+				<TopSectionLink href={ROUTES.ionTreatment}>詳しくはこちらから</TopSectionLink>
 			</div>
 		</TopSectionContainer>
 	);

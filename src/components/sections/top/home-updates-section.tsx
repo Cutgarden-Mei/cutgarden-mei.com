@@ -70,7 +70,7 @@ export async function HomeUpdatesSection() {
 			<div className="flex flex-col items-center justify-center gap-4">
 				<PostKeywordSearchField className="flex w-full max-w-[300px] justify-center" />
 				<div className="flex gap-4 items-start md:flex-row flex-col w-full md:justify-center px-[37.5px]">
-					<HomeUpdatesColumn title="最新のおしらせ" items={noticeItems} />
+					<HomeUpdatesColumn title="最新のお知らせ" items={noticeItems} />
 					<HomeUpdatesColumn title="最新の記事" items={articleItems} />
 				</div>
 			</div>

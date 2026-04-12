@@ -2,6 +2,7 @@ import { DecoratedSectionTitle } from "@/components/sections/decorated-section-t
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 import { TopSectionLink } from "@/components/sections/top/top-section-link";
+import { ROUTES } from "@/lib/routes";
 
 export function HomeResetCutSection() {
 	return (
@@ -42,7 +43,7 @@ export function HomeResetCutSection() {
 					</div>
 					<p>など・・・</p>
 				</div>
-				<TopSectionLink href="/">詳しくはこちらから</TopSectionLink>
+				<TopSectionLink href={ROUTES.resetCut}>詳しくはこちらから</TopSectionLink>
 			</div>
 		</TopSectionContainer>
 	);
