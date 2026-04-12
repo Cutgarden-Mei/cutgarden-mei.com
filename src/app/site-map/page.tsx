@@ -9,7 +9,7 @@ import { getNewsDetailRoute, ROUTES } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
 
 export const metadata = buildMetadata({
-	title: buildPageTitle("Sitemap"),
+	title: buildPageTitle("サイトマップ"),
 	description: "サイトマップページです。",
 	path: ROUTES.siteMap,
 });
@@ -29,7 +29,7 @@ function SitemapRow({ item }: SitemapRowProps) {
 		return (
 			<li className="border-b border-dotted border-[#d9cfc6] pb-4">
 				<details className="group">
-					<summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[13px] text-[#4f392d] transition hover:opacity-80">
+					<summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[#4f392d] transition hover:opacity-80">
 						<span className="inline-flex items-center gap-3">
 							<Image
 								src="/images/decoration/ico_lv1.png"
@@ -48,7 +48,7 @@ function SitemapRow({ item }: SitemapRowProps) {
 						</span>
 					</summary>
 
-					<ul className="mt-3 ml-6 space-y-2 text-[12px] text-[#6f5646]">
+					<ul className="mt-3 ml-6 space-y-2 text-[#6f5646]">
 						{item.children.map((child) => (
 							<li key={child.href}>
 								<Link
@@ -69,7 +69,7 @@ function SitemapRow({ item }: SitemapRowProps) {
 		<li className="border-b border-dotted border-[#d9cfc6] pb-4">
 			<Link
 				href={item.href}
-				className="inline-flex items-center gap-3 text-[13px] text-[#4f392d] transition hover:opacity-80"
+				className="inline-flex items-center gap-3 text-[#4f392d] transition hover:opacity-80"
 			>
 				<Image
 					src="/images/decoration/ico_lv1.png"
@@ -132,7 +132,7 @@ export default async function SitemapPage() {
 			outerClassName="bg-black"
 			backgroundImageSrc="/images/decoration/christmas-3.jpg"
 		>
-			<div className="mx-auto max-w-[760px]">
+			<div className="mx-auto max-w-[760px] text-[16px]">
 				<ul className="space-y-4">
 					{pageLinks.map((item) => (
 						<SitemapRow key={item.label} item={item} />

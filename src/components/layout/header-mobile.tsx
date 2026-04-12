@@ -84,8 +84,10 @@ function HeaderMobileInner({ pathname }: { pathname: string }) {
 						/>
 					</button>
 				</div>
-				<p className="mt-2 pb-3 text-left text-xs leading-relaxed text-white font-serif">
-					カットガーデンMeiは、大阪市平野区のアットホームな美容室です
+				<p className="mt-2 pb-3 text-left text-sm leading-relaxed text-white font-serif">
+					カットガーデンMeiは、大阪市平野区の
+					<br />
+					アットホームな美容室です
 				</p>
 			</div>
 

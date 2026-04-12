@@ -5,7 +5,7 @@ import { buildPageTitle } from "@/lib/site";
 import Image from "next/image";
 
 export const metadata = buildMetadata({
-	title: buildPageTitle("Access"),
+	title: buildPageTitle("アクセス"),
 	description: "アクセス情報ページです。",
 	path: "/access",
 });

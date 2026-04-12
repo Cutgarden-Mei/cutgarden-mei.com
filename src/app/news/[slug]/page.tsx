@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { PostKeywordSearchField } from "@/components/post-keyword-search-field";
 import { getPostBySlug, getPosts } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
 import { getArchiveMonthPath, getNewsDetailRoute, ROUTES } from "@/lib/routes";
@@ -129,16 +130,29 @@ export default async function NewsDetailPage({
 		<section className="bg-[#f5f0eb] px-4 py-10 md:px-6 md:py-14">
 			<div className="mx-auto flex w-full max-w-[1040px] flex-col gap-4 items-start">
 				<nav
-					className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#6f5646] md:text-sm"
+					className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs md:text-sm"
 					aria-label="パンくず"
 				>
-					<Link href={ROUTES.home} className="transition hover:text-top-pink">
-						ホーム
+					<Link
+						href={ROUTES.home}
+						className="inline-flex items-center gap-1.5 text-top-pink transition hover:opacity-80"
+					>
+						<Image
+							src="/images/news/home.png"
+							alt=""
+							width={14}
+							height={14}
+							className="h-[14px] w-[14px] shrink-0"
+						/>
+						<span>ホーム</span>
 					</Link>
 					<span className="text-[#b5a89c]" aria-hidden>
 						&gt;
 					</span>
-					<Link href={listIndexPath} className="transition hover:text-top-pink">
+					<Link
+						href={listIndexPath}
+						className="text-top-pink transition hover:opacity-80"
+					>
 						{getTypeLabel(post.type)}
 					</Link>
 					<span className="text-[#b5a89c]" aria-hidden>
@@ -146,35 +160,15 @@ export default async function NewsDetailPage({
 					</span>
 					<span className="line-clamp-2 text-[#3d2f28]">{post.title}</span>
 				</nav>
-				<div className="flex flex-col gap-8 lg:flex-row">
-					{/* サイドバー */}
-					<aside className="w-full shrink-0 space-y-4 lg:w-[260px]">
+				<div className="flex w-full flex-col gap-8 lg:flex-row">
+					{/* サイドバー（SPではメインの下に表示） */}
+					<aside className="order-2 w-full shrink-0 space-y-4 lg:order-1 lg:w-[260px]">
 						<div className="overflow-hidden border-t-4 border-[#7a3a12] bg-[#fffdfa] shadow-sm">
 							<div className="bg-[#f2f2f2] px-3 py-2 text-sm font-bold text-black">
 								検索
 							</div>
 							<div className="p-3">
-								<div className="relative h-[36px]">
-									<input
-										type="text"
-										placeholder="キーワード検索"
-										className="h-full w-full rounded-sm border border-[#c4b5a8] bg-white px-3 pr-10 text-sm text-[#3d2f28] placeholder:text-[#a8988c]"
-										readOnly
-									/>
-									<button
-										type="button"
-										className="absolute top-1/2 right-2 flex h-[20px] w-[20px] -translate-y-1/2 items-center justify-center text-[#6f5646]"
-										aria-label="検索"
-									>
-										<Image
-											src="/images/decoration/search.png"
-											alt=""
-											width={18}
-											height={18}
-											className="h-[18px] w-[18px]"
-										/>
-									</button>
-								</div>
+								<PostKeywordSearchField />
 							</div>
 						</div>
 
@@ -194,8 +188,12 @@ export default async function NewsDetailPage({
 												aria-current={
 													item.slug === post.slug ? "page" : undefined
 												}
-												className={`inline-flex gap-1.5 leading-snug text-top-pink transition hover:underline`}
+												className="inline-flex items-center gap-1.5 leading-snug text-top-pink transition hover:underline"
 											>
+												<ChevronRight
+													className="h-4 w-4 shrink-0 text-top-pink"
+													aria-hidden
+												/>
 												<span>{item.title}</span>
 											</Link>
 										</li>
@@ -209,17 +207,17 @@ export default async function NewsDetailPage({
 						<details className="group overflow-hidden border-t-4 border-[#7a3a12] bg-[#fffdfa] shadow-sm">
 							<summary className="flex cursor-pointer list-none items-center justify-between gap-2 bg-[#f2f2f2] px-3 py-2 text-sm font-bold text-black [&::-webkit-details-marker]:hidden">
 								<span>アーカイブ</span>
-								<span className="text-top-brown group-open:hidden" aria-hidden>
+								<span className="text-top-pink group-open:hidden" aria-hidden>
 									<ChevronDown className="h-4 w-4" />
 								</span>
 								<span
-									className="hidden text-top-brown group-open:inline"
+									className="hidden text-top-pink group-open:inline"
 									aria-hidden
 								>
 									<ChevronUp className="h-4 w-4" />
 								</span>
 							</summary>
-							<ul className="max-h-[420px] overflow-y-auto px-3 py-2 text-sm">
+							<ul className="max-h-[420px] overflow-y-auto px-3 py-2 text-sm text-top-pink">
 								{archiveItems.map((item) => (
 									<li
 										key={item.key}
@@ -227,7 +225,7 @@ export default async function NewsDetailPage({
 									>
 										<Link
 											href={getArchiveMonthPath(item.key)}
-											className="inline-flex flex-1 items-center gap-1.5 text-left text-[#5c4a40] transition hover:text-top-pink"
+											className="inline-flex flex-1 items-center gap-1.5 text-left text-top-pink transition hover:opacity-80"
 										>
 											<ChevronRight
 												className="h-4 w-4 shrink-0 text-top-pink"
@@ -235,7 +233,7 @@ export default async function NewsDetailPage({
 											/>
 											<span>{item.label}</span>
 										</Link>
-										<span className="shrink-0 tabular-nums text-[#7e6b61]">
+										<span className="shrink-0 tabular-nums text-top-pink">
 											{item.count}
 										</span>
 									</li>
@@ -272,8 +270,8 @@ export default async function NewsDetailPage({
 						</div>
 					</aside>
 
-					{/* メイン */}
-					<div className="min-w-0 flex-1">
+					{/* メイン（SPではパンくず直下に表示） */}
+					<div className="order-1 min-w-0 flex-1 lg:order-2">
 						<article className="overflow-hidden bg-white shadow-[0_10px_28px_rgba(61,27,0,0.08)] border-t-4 border-[#7a3a12]">
 							<div className="flex flex-wrap items-center justify-between gap-3 bg-[#f2f2f2] px-4 py-3 md:px-6">
 								<p className="inline-flex items-center gap-2 text-sm text-[#4a3d36]">

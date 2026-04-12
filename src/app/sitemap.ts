@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ROUTES.access,
     ROUTES.contact,
     ROUTES.news,
+    ROUTES.newsSearch,
     ROUTES.blog,
     ROUTES.siteMap,
     ROUTES.hairBasics,

@@ -42,7 +42,7 @@ export default function ClinicStraighteningPage() {
 			backgroundImageSrc="/images/decoration/christmas-3.jpg"
 		>
 			<div className="mx-auto max-w-[760px] space-y-12">
-				<p className="text-base font-medium leading-12 md:text-3xl bg-[#7a3a12] text-white p-2 rounded-[4px]">
+				<p className="font-medium leading-12 text-3xl bg-[#7a3a12] text-white p-2 rounded-[4px]">
 					まるで　「生まれつきのストレートヘアみたいに自然でツヤツヤ！」　の髪に!!
 				</p>
 

@@ -6,6 +6,7 @@ export const ROUTES = {
 	access: "/access",
 	contact: "/contact",
 	news: "/news",
+	newsSearch: "/news/search",
 	blog: "/blog",
 	siteMap: "/site-map",
 	hairBasics: "/hair-basics",
@@ -33,4 +34,14 @@ export function getNewsDetailRoute(slug: string) {
 
 export function getArchiveMonthPath(yearMonth: string) {
 	return `/archive/${yearMonth}`;
+}
+
+/** キーワード検索結果ページの URL（`page` は 1 始まり。1 のときは省略） */
+export function buildNewsSearchUrl(query: string, page = 1): string {
+	const params = new URLSearchParams();
+	const q = query.trim();
+	if (q) params.set("q", q);
+	if (page > 1) params.set("page", String(page));
+	const qs = params.toString();
+	return qs ? `${ROUTES.newsSearch}?${qs}` : ROUTES.newsSearch;
 }

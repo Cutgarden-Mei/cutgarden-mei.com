@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { PostKeywordSearchField } from "@/components/post-keyword-search-field";
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
 import { getHomeUpdatePosts } from "@/lib/contentful";
@@ -68,25 +68,7 @@ export async function HomeUpdatesSection() {
 	return (
 		<TopSectionContainer className="py-14">
 			<div className="flex flex-col items-center justify-center gap-4">
-				<div className="relative h-[32px] max-w-[300px] w-full">
-					<input
-						type="text"
-						className="w-full h-full rounded-full border-3 border-contact-panel pr-8"
-					/>
-					<button
-						type="button"
-						className="absolute top-1/2 right-1 mr-1 h-[18px] w-[18px] -translate-y-1/2 cursor-pointer"
-						aria-label="検索"
-					>
-						<Image
-							src="/images/decoration/search.png"
-							alt=""
-							width={18}
-							height={18}
-							className="h-5 w-5"
-						/>
-					</button>
-				</div>
+				<PostKeywordSearchField className="flex w-full max-w-[300px] justify-center" />
 				<div className="flex gap-4 items-start md:flex-row flex-col w-full md:justify-center px-[37.5px]">
 					<HomeUpdatesColumn title="最新のおしらせ" items={noticeItems} />
 					<HomeUpdatesColumn title="最新の記事" items={articleItems} />
