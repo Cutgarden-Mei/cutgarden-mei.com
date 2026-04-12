@@ -34,7 +34,9 @@ const FOOTER_NAV_ITEMS: PageLinkItem[] = [
 ];
 
 function FooterSectionTitle({ children }: FooterSectionTitleProps) {
-	return <p className="border-b border-[#904100] pb-2">{children}</p>;
+	return (
+		<p className="border-b border-[#904100] pb-2 font-serif">{children}</p>
+	);
 }
 
 export async function Footer() {
