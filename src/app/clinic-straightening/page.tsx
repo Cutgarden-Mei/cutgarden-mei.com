@@ -85,7 +85,7 @@ export default function ClinicStraighteningPage() {
 					<div className="flex flex-col gap-6 pt-2 md:flex-row md:gap-8">
 						<div className="text-center w-full max-w-[224px]">
 							<Image
-								src="/images/syukumoudan.jpg"
+								src="/images/clinicStraightening/syukumoudan.jpg"
 								alt="縮毛髪の断面（楕円形）の模式図"
 								width={224}
 								height={195}
@@ -94,7 +94,7 @@ export default function ClinicStraighteningPage() {
 						</div>
 						<div className="text-center w-full max-w-[224px]">
 							<Image
-								src="/images/tyokumoudan.jpg"
+								src="/images/clinicStraightening/tyokumoudan.jpg"
 								alt="直毛髪の断面（円形に近い）の模式図"
 								width={224}
 								height={195}
