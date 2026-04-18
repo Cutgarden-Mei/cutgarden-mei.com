@@ -1,20 +1,16 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
+import { ArchiveMonthClient } from "@/components/news/archive-month-client";
 import { PageFrame } from "@/components/page-frame";
-import { PostArchiveList } from "@/components/post-archive-list";
-import { PostArchivePagination } from "@/components/post-archive-pagination";
 import {
-	filterPostsByYearMonth,
 	formatYearMonthTitleJp,
 	isValidYearMonthKey,
 } from "@/lib/archive-year-month";
 import { getPosts } from "@/lib/contentful";
 import { buildMetadata } from "@/lib/metadata";
-import { paginatePosts, parseArchivePageParam } from "@/lib/paginate-posts";
 import { getArchiveMonthPath } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
-
-export const revalidate = 60;
 
 export async function generateStaticParams() {
 	const posts = await getPosts();
@@ -44,38 +40,30 @@ export async function generateMetadata({
 	});
 }
 
-export default async function ArchiveMonthPage({
-	params,
-	searchParams,
-}: {
+type ArchiveMonthPageProps = {
 	params: Promise<{ yearMonth: string }>;
-	searchParams: Promise<{ page?: string | string[] }>;
-}) {
+};
+
+export default async function ArchiveMonthPage({ params }: ArchiveMonthPageProps) {
 	const { yearMonth } = await params;
 	if (!isValidYearMonthKey(yearMonth)) notFound();
 
-	const { page: pageParam } = await searchParams;
-	const page = parseArchivePageParam(pageParam);
-	const posts = await getPosts();
-	const monthPosts = filterPostsByYearMonth(posts, yearMonth);
-	const { items, currentPage, totalPages } = paginatePosts(monthPosts, page);
-
 	const title = `${formatYearMonthTitleJp(yearMonth)}の記事一覧`;
-
-	return (
+	const fallback = (
 		<PageFrame
 			title={title}
 			outerClassName="bg-black"
 			backgroundImageSrc="/images/decoration/christmas-3.jpg"
 		>
-			<div className="mx-auto max-w-[760px]">
-				<PostArchiveList posts={items} showPostType />
-				<PostArchivePagination
-					basePath={getArchiveMonthPath(yearMonth)}
-					currentPage={currentPage}
-					totalPages={totalPages}
-				/>
+			<div className="mx-auto max-w-[760px] py-12 text-center text-[#6f5646]">
+				読み込み中…
 			</div>
 		</PageFrame>
+	);
+
+	return (
+		<Suspense fallback={fallback}>
+			<ArchiveMonthClient yearMonth={yearMonth} />
+		</Suspense>
 	);
 }

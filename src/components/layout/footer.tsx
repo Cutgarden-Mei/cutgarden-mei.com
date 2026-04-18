@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import { getPosts } from "@/lib/contentful";
+import { usePostsQuery } from "@/hooks/use-posts-query";
 import { getNewsDetailRoute, ROUTES } from "@/lib/routes";
 
 type PageLinkItem = {
@@ -39,8 +41,9 @@ function FooterSectionTitle({ children }: FooterSectionTitleProps) {
 	);
 }
 
-export async function Footer() {
-	const footerArticles = (await getPosts())
+export function Footer() {
+	const { data: posts = [] } = usePostsQuery();
+	const footerArticles = posts
 		.filter((post) => post.type === "news")
 		.slice(0, 5)
 		.map((post) => ({
@@ -78,7 +81,7 @@ export async function Footer() {
 					<ul className="text-sm flex flex-col gap-2">
 						{footerArticles.map((item) => (
 							<Link
-								key={item.label}
+								key={item.href}
 								href={item.href}
 								className="flex w-fit items-center gap-2 hover:underline group"
 							>

@@ -4,6 +4,7 @@ import { Noto_Serif_JP } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ScrollToTopButton } from "@/components/layout/scroll-to-top-button";
+import { QueryProvider } from "@/components/providers/query-provider";
 import { getSiteSettings } from "@/lib/contentful";
 
 import "./globals.css";
@@ -30,10 +31,12 @@ export default function RootLayout({
 	return (
 		<html lang="ja">
 			<body className={`${notoSerif.variable} font-sans bg-white`}>
-				<Header />
-				<main className="bg-white">{children}</main>
-				<Footer />
-				<ScrollToTopButton />
+				<QueryProvider>
+					<Header />
+					<main className="bg-white">{children}</main>
+					<Footer />
+					<ScrollToTopButton />
+				</QueryProvider>
 			</body>
 		</html>
 	);

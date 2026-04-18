@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
 
 import { PostKeywordSearchField } from "@/components/post-keyword-search-field";
 import { DecoratedTextRow } from "@/components/sections/decorated-text-row";
 import { TopSectionContainer } from "@/components/sections/top/top-section-container";
-import { getHomeUpdatePosts } from "@/lib/contentful";
+import { usePostsQuery } from "@/hooks/use-posts-query";
 import { getNewsDetailRoute } from "@/lib/routes";
 
 type HomeUpdatesListItemProps = {
@@ -52,26 +54,35 @@ function HomeUpdatesColumn({ title, items }: HomeUpdatesColumnProps) {
 	);
 }
 
-export async function HomeUpdatesSection() {
-	const { news, blog } = await getHomeUpdatePosts();
-	const noticeItems = news.map((post) => ({
-		id: post.id,
-		href: getNewsDetailRoute(post.slug),
-		title: post.title,
-	}));
-	const articleItems = blog.map((post) => ({
-		id: post.id,
-		href: getNewsDetailRoute(post.slug),
-		title: post.title,
-	}));
+const LIMIT = 5;
+
+export function HomeUpdatesSection() {
+	const { data: posts = [] } = usePostsQuery();
+
+	const news = posts
+		.filter((post) => post.type === "news")
+		.slice(0, LIMIT)
+		.map((post) => ({
+			id: post.slug,
+			href: getNewsDetailRoute(post.slug),
+			title: post.title,
+		}));
+	const blog = posts
+		.filter((post) => post.type === "blog")
+		.slice(0, LIMIT)
+		.map((post) => ({
+			id: post.slug,
+			href: getNewsDetailRoute(post.slug),
+			title: post.title,
+		}));
 
 	return (
 		<TopSectionContainer className="py-14">
 			<div className="flex flex-col items-center justify-center gap-4">
 				<PostKeywordSearchField className="flex w-full max-w-[300px] justify-center" />
 				<div className="flex gap-4 items-start md:flex-row flex-col w-full md:justify-center px-[37.5px]">
-					<HomeUpdatesColumn title="最新のお知らせ" items={noticeItems} />
-					<HomeUpdatesColumn title="最新の記事" items={articleItems} />
+					<HomeUpdatesColumn title="最新のお知らせ" items={news} />
+					<HomeUpdatesColumn title="最新の記事" items={blog} />
 				</div>
 			</div>
 		</TopSectionContainer>
