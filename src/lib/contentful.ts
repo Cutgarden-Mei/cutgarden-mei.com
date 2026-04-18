@@ -60,10 +60,18 @@ function normalizePostType(value: unknown): HomeUpdatePostType | null {
   return value === "blog" || value === "news" ? value : null;
 }
 
+/** Contentful の日時を UTC 暦日にせず、日本の暦日として YYYY-MM-DD に揃える */
+const PUBLISHED_AT_TIMEZONE = "Asia/Tokyo";
+
 function normalizePublishedAt(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-  return date.toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: PUBLISHED_AT_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
 }
 
 type RichTextNode = {

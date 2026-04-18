@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { PostKeywordSearchField } from "@/components/post-keyword-search-field";
 import { getPostBySlug, getPosts } from "@/lib/contentful";
+import { formatPostDetailShortYmd } from "@/lib/format-post-list-date";
 import { buildMetadata } from "@/lib/metadata";
 import { getArchiveMonthPath, getNewsDetailRoute, ROUTES } from "@/lib/routes";
 import { buildPageTitle } from "@/lib/site";
@@ -23,13 +24,6 @@ const SIDEBAR_CATEGORY_ITEMS: {
 	{ href: ROUTES.blog, label: "ブログ", postType: "blog" },
 ];
 
-function formatShortYmd(value: string) {
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) return value;
-	const yy = String(date.getFullYear()).slice(-2);
-	return `${yy}/${date.getMonth() + 1}/${date.getDate()}`;
-}
-
 function getTypeLabel(type: HomeUpdatePostType) {
 	return type === "blog" ? "ブログ" : "お知らせ";
 }
@@ -39,10 +33,11 @@ function getCategoryTagLabel(post: Post) {
 	return post.type === "blog" ? "ブログ" : "お知らせ";
 }
 
-function getArchiveLabel(value: string) {
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) return value;
-	return `${date.getFullYear()}年${String(date.getMonth() + 1).padStart(2, "0")}月`;
+/** `YYYY-MM` → `YYYY年MM月`（暦日文字列から直接、サーバTZに依存しない） */
+function formatYearMonthJapanese(yearMonth: string) {
+	const m = /^(\d{4})-(\d{2})$/.exec(yearMonth.trim());
+	if (!m) return yearMonth;
+	return `${m[1]}年${m[2]}月`;
 }
 
 function getArchiveItems(posts: Post[]) {
@@ -54,7 +49,7 @@ function getArchiveItems(posts: Post[]) {
 	return [...archiveMap.entries()]
 		.map(([key, count]) => ({
 			key,
-			label: getArchiveLabel(`${key}-01`),
+			label: formatYearMonthJapanese(key),
 			count,
 		}))
 		.sort((a, b) => b.key.localeCompare(a.key));
@@ -283,7 +278,7 @@ export default async function NewsDetailPage({
 										className="h-[14px] w-[14px]"
 									/>
 									<time dateTime={post.publishedAt}>
-										{formatShortYmd(post.publishedAt)}
+										{formatPostDetailShortYmd(post.publishedAt)}
 									</time>
 								</p>
 								<p className="inline-flex items-center gap-2 text-sm text-[#4a3d36]">

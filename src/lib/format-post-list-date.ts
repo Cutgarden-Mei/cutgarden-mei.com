@@ -7,3 +7,13 @@ export function formatPostListDate(isoDate: string): string {
 	const d = Number(m[3]);
 	return `${y}/${mo}/${d}`;
 }
+
+/** 詳細用: `2026-04-08` → `26/4/8`（保存した暦日をそのまま、タイムゾーンでずらさない） */
+export function formatPostDetailShortYmd(isoDate: string): string {
+	const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(isoDate.trim());
+	if (!m) return isoDate;
+	const yy = String(Number(m[1])).slice(-2);
+	const mo = Number(m[2]);
+	const d = Number(m[3]);
+	return `${yy}/${mo}/${d}`;
+}
