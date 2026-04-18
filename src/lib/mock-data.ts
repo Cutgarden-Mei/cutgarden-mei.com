@@ -8,6 +8,7 @@ import type {
 	StaffMember,
 	Voice,
 } from "@/lib/types";
+import { paragraphsToRichTextDocument } from "@/lib/rich-text-document";
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from "@/lib/site";
 
 export const siteSettings: SiteSettings = {
@@ -152,26 +153,24 @@ export const newsPosts: NewsPost[] = [
 		title: "サイトリニューアル準備のお知らせ",
 		excerpt:
 			"現サイトの世界観を残しながら、更新しやすい構成へ置き換える準備を進めています。",
-		body: [
+		body: paragraphsToRichTextDocument([
 			"現在、WordPressで運用しているサイトを Next.js + Contentful 構成へ移行する準備を進めています。",
 			"公開後は、メニューやスタッフ情報の更新をよりスムーズに行える予定です。",
-		],
+		]),
 		category: "お知らせ",
 		publishedAt: "2026-03-09",
-		image: "/images/default-image.jpg",
 		type: "news",
 	},
 	{
 		slug: "spring-color-campaign",
 		title: "春カラーのご相談受付中",
 		excerpt: "透明感を意識した春のカラーメニューを提案しています。",
-		body: [
+		body: paragraphsToRichTextDocument([
 			"明るさを抑えつつもやわらかく見えるカラー提案を強化しています。",
 			"髪の状態やライフスタイルに合わせた色味をご案内します。",
-		],
+		]),
 		category: "キャンペーン",
 		publishedAt: "2026-03-01",
-		image: "/images/default-image.jpg",
 		type: "news",
 	},
 ];

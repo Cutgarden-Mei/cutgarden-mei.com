@@ -1,3 +1,4 @@
+import { documentToPlainText } from "@/lib/rich-text-document";
 import type { Post } from "@/lib/types";
 
 /** 空白区切りの各語がすべて本文・タイトル等に含まれる投稿に絞り込む */
@@ -10,11 +11,12 @@ export function filterPostsByKeyword(posts: Post[], rawQuery: string): Post[] {
 	if (terms.length === 0) return [];
 
 	return posts.filter((post) => {
+		const bodyText = documentToPlainText(post.body);
 		const haystack = [
 			post.title,
 			post.excerpt,
 			post.category,
-			...post.body,
+			bodyText,
 			post.type === "blog" ? "ブログ" : "お知らせ",
 		]
 			.join("\n")

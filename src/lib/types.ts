@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Document } from "@contentful/rich-text-types";
 
 export type NavItem = {
   label: string;
@@ -69,10 +70,10 @@ export type Post = {
   slug: string;
   title: string;
   excerpt: string;
-  body: string[];
+  /** Contentful Rich Text（本文内の埋め込み画像・見出し等を含む） */
+  body: Document;
   category: string;
   publishedAt: string;
-  image: string;
   type: HomeUpdatePostType;
 };
 

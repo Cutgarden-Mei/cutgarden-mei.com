@@ -3,6 +3,7 @@ import "server-only";
 import { createClient, type EntrySkeletonType } from "contentful";
 
 import { accessInfo, contactSettings, homePage, menuCategories, newsPosts, siteSettings, staffMembers, voices } from "@/lib/mock-data";
+import { excerptFromDocument, parseRichTextDocument } from "@/lib/rich-text-document";
 import type { ContactFormPayload } from "@/lib/resend";
 import type {
   AccessInfo,
@@ -74,42 +75,6 @@ function normalizePublishedAt(value: string): string {
   }).format(date);
 }
 
-type RichTextNode = {
-  value?: unknown;
-  content?: RichTextNode[];
-};
-
-function getRichTextNodeText(node: RichTextNode): string {
-  const ownValue = typeof node.value === "string" ? node.value : "";
-  const childValue = Array.isArray(node.content)
-    ? node.content.map((child) => getRichTextNodeText(child)).join("")
-    : "";
-
-  return `${ownValue}${childValue}`;
-}
-
-function normalizeBody(value: unknown): string[] {
-  if (Array.isArray(value)) {
-    return value.filter((paragraph): paragraph is string => typeof paragraph === "string" && paragraph.trim().length > 0);
-  }
-
-  if (!value || typeof value !== "object" || !("content" in value) || !Array.isArray(value.content)) {
-    return [];
-  }
-
-  return value.content
-    .map((node) => {
-      const text = getRichTextNodeText(node as RichTextNode)
-        .replace(/\r\n/g, "\n")
-        .replace(/\r/g, "\n")
-        // 改行は残し、改行以外の連続空白のみ1スペースに畳む
-        .replace(/[^\S\n]+/g, " ")
-        .trim();
-      return text;
-    })
-    .filter((paragraph): paragraph is string => paragraph.length > 0);
-}
-
 function getPostCategory(type: HomeUpdatePostType): string {
   return type === "blog" ? "ブログ" : "お知らせ";
 }
@@ -122,7 +87,7 @@ function mapEntryToPost(entry: { sys: { id: string }; fields: Fields }): Post | 
   const type = normalizePostType(entry.fields.type);
   if (!type) return null;
 
-  const body = normalizeBody(entry.fields.body);
+  const body = parseRichTextDocument(entry.fields.body);
   const title = getField(entry, "title", "");
 
   if (!title) return null;
@@ -130,11 +95,10 @@ function mapEntryToPost(entry: { sys: { id: string }; fields: Fields }): Post | 
   return {
     slug: getField(entry, "slug", entry.sys.id),
     title,
-    excerpt: body[0] ?? "",
+    excerpt: excerptFromDocument(body),
     body,
     category: getField(entry, "category", getPostCategory(type)),
     publishedAt: normalizePublishedAt(getField(entry, "publishedAt", "")),
-    image: getField(entry, "image", "/images/default-image.jpg"),
     type,
   };
 }
@@ -259,6 +223,7 @@ export async function getPosts(): Promise<Post[]> {
     const response = await client.getEntries<BasicEntry>({
       content_type: "post",
       limit: 1000,
+      include: 2,
     });
 
     return sortPostsByPublishedAt(

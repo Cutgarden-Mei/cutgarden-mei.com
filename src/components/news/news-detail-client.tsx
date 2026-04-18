@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PostKeywordSearchField } from "@/components/post-keyword-search-field";
+import { PostRichTextBody } from "@/components/news/post-rich-text-body";
 import { usePostsQuery } from "@/hooks/use-posts-query";
 import { formatPostDetailShortYmd } from "@/lib/format-post-list-date";
 import {
@@ -63,12 +64,8 @@ export function NewsDetailClient({ slug }: NewsDetailClientProps) {
 	const recentPosts = posts!.filter((p) => p.type === "news").slice(0, 5);
 
 	const archiveItems = getArchiveItems(posts!);
-	const hasSeparateBody = post.body.length > 0;
-	const paragraphs = hasSeparateBody
-		? post.body
-		: post.excerpt
-			? [post.excerpt]
-			: [];
+	const hasRichBody = post.body.content.length > 0;
+	const showExcerptOnly = !hasRichBody && Boolean(post.excerpt?.trim());
 
 	const listIndexPath = post.type === "blog" ? ROUTES.blog : ROUTES.news;
 
@@ -258,15 +255,14 @@ export function NewsDetailClient({ slug }: NewsDetailClientProps) {
 								</div>
 							</div>
 
-							<div className="space-y-5 px-4 py-6 text-[15px] leading-[1.9] text-[#3d332d] md:px-8 md:py-8 md:text-base md:leading-8">
-								{paragraphs.map((paragraph, index) => (
-									<p
-										key={`${post.slug}-${index}`}
-										className="whitespace-pre-line"
-									>
-										{paragraph}
+							<div className="px-4 py-6 md:px-8 md:py-8">
+								{hasRichBody ? (
+									<PostRichTextBody document={post.body} />
+								) : showExcerptOnly ? (
+									<p className="whitespace-pre-line text-[15px] leading-[1.9] text-[#3d332d] md:text-base md:leading-8">
+										{post.excerpt}
 									</p>
-								))}
+								) : null}
 							</div>
 
 							<nav
