@@ -35,6 +35,10 @@ const FOOTER_NAV_ITEMS: PageLinkItem[] = [
 	{ href: ROUTES.home, label: "トップページ" },
 ];
 
+const FOOTER_FACEBOOK_URL = "https://www.facebook.com/cutgarden.mei/";
+const FOOTER_LINE_URL =
+	"https://page.line.me/xat.0000171111.xe2?openQrModal=true";
+
 function FooterSectionTitle({ children }: FooterSectionTitleProps) {
 	return (
 		<p className="border-b border-[#904100] pb-2 font-serif">{children}</p>
@@ -101,7 +105,12 @@ export function Footer() {
 				<div className="w-full md:w-1/3 flex flex-col gap-4">
 					<FooterSectionTitle>リンク</FooterSectionTitle>
 					<div className="flex min-w-0 flex-col gap-2">
-						<Link href={ROUTES.home} className="block w-full hover:opacity-90">
+						<Link
+							href={FOOTER_FACEBOOK_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="block w-full hover:opacity-90"
+						>
 							<Image
 								src="/images/footer/facebook.png"
 								alt="Facebook"
@@ -112,7 +121,12 @@ export function Footer() {
 								className="h-auto w-full object-contain"
 							/>
 						</Link>
-						<Link href={ROUTES.home} className="block w-full hover:opacity-90">
+						<Link
+							href={FOOTER_LINE_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="block w-full hover:opacity-90"
+						>
 							<Image
 								src="/images/footer/line.png"
 								alt="LINE"
