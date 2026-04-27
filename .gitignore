@@ -13,3 +13,18 @@ out
 .DS_Store
 npm-debug.log*
 *.tsbuildinfo
+
+# 旧WordPressサイトの移行元
+old/*
+!old/httpdocs/
+old/httpdocs/*
+!old/httpdocs/wp/
+old/httpdocs/wp/*
+!old/httpdocs/wp/wp-content/
+old/httpdocs/wp/wp-content/*
+!old/httpdocs/wp/wp-content/themes/
+old/httpdocs/wp/wp-content/themes/*
+!old/httpdocs/wp/wp-content/themes/cutgardenmei/
+!old/httpdocs/wp/wp-content/themes/cutgardenmei/**
+!old/httpdocs/wp/wp-content/themes/cutgardenmei-child/
+!old/httpdocs/wp/wp-content/themes/cutgardenmei-child/**

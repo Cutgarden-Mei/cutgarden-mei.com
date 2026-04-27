@@ -1,0 +1,25 @@
+@charaset "utf-8";
+/*
+ Theme Name: Cutgarden-Mei child
+ Template: cutgardenmei
+*/
+
+
+/*************************************************
+                  固定ページ背景
+*************************************************/
+.page-cont, .index-cont {
+	/* 背景画像が見える様に間隔を空けています */
+	padding: 160px 0;
+	/* 背景画像の指定 */
+	background: url(images/bg/christmas-3.jpg) no-repeat center center fixed;
+	/* 背景画像の全画面サイズ指定 */
+	background-size: auto;
+}
+
+
+/**************** 横幅768px以上 *****************/
+@media screen and (min-width: 768px){
+	/* タブレットサイズ以上で画像が見える間隔を拡げています */
+	.page-cont { padding: 240px 0;}
+}
