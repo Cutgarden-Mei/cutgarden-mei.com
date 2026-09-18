@@ -23,7 +23,7 @@ export default async function AccessPage() {
 			label: "受付時間",
 			value: "パーマ・カラーはPM5:30まで\nカットはPM6:30まで",
 		},
-		{ label: "定休日", value: "毎週月曜日" },
+		{ label: "定休日", value: "月曜日・火曜日（祝日の場合もお休み）" },
 	];
 	const guideParagraphs = [
 		"出来るだけご来店前にお電話下さいますようお願いいたします。",

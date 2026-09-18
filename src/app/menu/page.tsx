@@ -62,7 +62,7 @@ export default function MenuPage() {
 						<PriceRow label="小学生(S.500)" price="￥1,850" />
 						<PriceRow label="だっこ" price="￥2,050" />
 						<PriceRow label="前髪カット" price="￥1,020" />
-						<PriceRow label="シャンプー＆ブロー" price="￥2,420" />
+						<PriceRow label="シャンプー＆ブロー" price="￥2,530" />
 					</ul>
 				</PageSection>
 
@@ -85,10 +85,10 @@ export default function MenuPage() {
 						/>
 						<MenuItemWithNote
 							label="形状記憶ケラチンパーマ"
-							price="￥12,650～"
+							price="￥12,980～"
 							note="（髪の主成分のケラチンのみでカールをつけます）"
 						/>
-						<MenuItemWithNote label="ストレート" price="￥9,350～" />
+						<MenuItemWithNote label="ストレート" price="￥9,900～" />
 					</ul>
 				</PageSection>
 
@@ -96,7 +96,7 @@ export default function MenuPage() {
 					<ul className="list-none space-y-0 pl-0">
 						<PriceRow
 							label="クリニック縮毛矯正(ノンアイロン)"
-							price="￥21,450～"
+							price="￥22,000～"
 						/>
 					</ul>
 				</PageSection>
@@ -105,17 +105,17 @@ export default function MenuPage() {
 					<ul className="list-none space-y-0 pl-0 leading-8">
 						<MenuItemWithNote
 							label="イオントリートメントカラー"
-							price="￥7,480～"
+							price="￥7,810～"
 							note="（超おすすめ。ツヤツヤになります）"
 						/>
-						<PriceRow label="白髪染め" price="￥5,610～" />
-						<PriceRow label="おしゃれ" price="￥6,710～" />
+						<PriceRow label="白髪染め" price="￥5,940～" />
+						<PriceRow label="おしゃれ" price="￥7,040～" />
 					</ul>
 					<p className="mt-4 leading-8">
 						★髪を傷めない為に、プレトリートメント（＋￥1,100）を推奨しています。
 					</p>
 					<ul className="mt-4 list-none space-y-0 pl-0 leading-8">
-						<PriceRow label="酸性カラー" price="￥7,700～" />
+						<PriceRow label="酸性カラー（ヘアマニキュア）" price="￥8,250～" />
 					</ul>
 				</PageSection>
 
